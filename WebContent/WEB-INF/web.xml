@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Final</display-name>
+  <welcome-file-list>
+    <welcome-file>start.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>home.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Signup</display-name>
+    <servlet-name>Signup</servlet-name>
+    <servlet-class>home.Signup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Signup</servlet-name>
+    <url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>Profile.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProfileController</display-name>
+    <servlet-name>ProfileController</servlet-name>
+    <servlet-class>Profile.ProfileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileController</servlet-name>
+    <url-pattern>/ProfileController</url-pattern>
+  </servlet-mapping>
+</web-app>
