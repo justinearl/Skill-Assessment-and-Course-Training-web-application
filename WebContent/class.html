@@ -89,7 +89,7 @@
     <div class="tab-pane fade show" id="nav-prof" role="tabpanel" aria-labelledby="nav-prof-tab" style="padding-top:20px;">
         <div style="display:flex">
         <div class="container" id="userAbout" style="margin-right: 30px; margin-left: 30px; padding:25px 25px 25px 25px;background-color: rgb(127,174,242); width: 300px">
-            <img src="avatar/6.png" class="userAvatar" style="width: 250px; height: 250px;">
+            <img src="images/class.jpg" class="userAvatar" style="width: 250px; height: 250px;">
             <h4 style="color: black; margin-top: 10px; margin-bottom: 0px; font-size:30px;" class="text-center"
                 id="cName">Class Name</h4>
             <p style="color: black" class="text-center" id="cDesc">Class Description eme eme cheverloo</p>
@@ -114,23 +114,36 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2" id="trainings">
+                    <table class="table table-data2" id="students">
                       <thead>
                         <tr>
-                          <th>Course Title</th>
-                          <th>Course Category</th>
-                          <th>Takers</th>
+                          <th style="width: 50px;">ID</th>
+                          <th style="width: 200px;">Student Name</th>
+                          <th style="width: 200px;">Last Log In</th>
+                          <th>Current Points</th>
+                          <th></th>
+                          <th></th>
+
                         </tr>
                       </thead>
                       <tbody>
                         <tr class="tr-shadow">
-                          <td>
+                          <td>334
                           </td>
+                          <td>John Hancock
+                        </td>
+                        <td>Yesterday
+                        </td>
+                        <td>100
+                        </td>
   
                           <td>
+                            <button class="btn btn-light view-profile"  id="viewProfile"><img src="icons/viewprofile.jpg" style="width: 25px; height: 25px;" title="View Profile"></button>
                           </td>
                           <td>
+                            <button class="btn btn-light view-profile"  id="deleteStud"><img src="icons/delete.png" style="width: 25px; height: 25px;" title="Delete Student from Class"></button>
                           </td>
+                          <!-- tsaka ko na ayusin to  -->
                         </tr>
                       </tbody>
                     </table>
@@ -278,6 +291,9 @@ Copyright &copy;2019 All rights reserved.</P>,
      alertify.defaults.theme.ok = "btn btn-success";
         $(document).ready(function(){
            $("#saveClass").click(checkClass);
+           $("#students").DataTable({
+          paging: true
+        });
            
         });
 

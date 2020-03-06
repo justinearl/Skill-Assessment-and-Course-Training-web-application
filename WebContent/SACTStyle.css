@@ -163,3 +163,16 @@ nav {
   color: black;
   margin-bottom: 0px;
 }
+
+.view-profile{
+  color:rgb(241,250,248)!important; 
+  border: 0px; 
+  padding:0px; 
+  margin:0px;
+  
+}
+
+.view-profile:hover{
+  color: blue;
+}
+
