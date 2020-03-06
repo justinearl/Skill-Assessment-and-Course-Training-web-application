@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%    response.sendRedirect(request.getContextPath() + "/Logout"); %>
+<%    response.sendRedirect("logout2.jsp"); %>
 
 </body>
 </html>

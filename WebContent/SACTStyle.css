@@ -1,166 +1,165 @@
 .avatar {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 body {
-    padding: 20px;
+  padding: 20px;
 }
 
 #headBar {
-    height: 50px;
-    width: 100%;
-    display: flex;
+  height: 50px;
+  width: 100%;
+  display: flex;
 }
 
 .logo {
-    height: 25px;
-    margin-left: 5px;
-    margin-right: 5px;
+  height: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    background-color: white;
-    color: rgb(89, 197, 177);
+.nav-pills .show > .nav-link {
+  background-color: white;
+  color: rgb(89, 197, 177);
 }
 
 a {
-    color: rgb(26, 26, 26);
+  color: rgb(26, 26, 26);
 }
 
 a:hover {
-    color: pink;
+  color: pink;
 }
 
 .btn-primary {
-    background-color: rgb(89, 197, 177);
+  background-color: rgb(89, 197, 177);
 }
 
 .modal-title {
-    text-align: center;
+  text-align: center;
 }
 
 nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .detailAbout {
-    width: 40%;
-    text-align: right;
+  width: 40%;
+  text-align: right;
 }
 
 .rowAbout td {
-    padding: 5px;
-    border-color: rgb(241,250,248);
-}.avatar {
-            margin-bottom: 15px;
-        }
-        body {
-            padding: 20px;
-        }
+  padding: 5px;
+  border-color: rgb(77, 135, 216);
+}
+.avatar {
+  margin-bottom: 15px;
+}
+body {
+  padding: 20px;
+}
 
-        #headBar {
-            height: 50px;
-            width: 100%;
-            display: flex;
-        }
+#headBar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+}
 
-        .logo {
-            height: 50px;
-            margin-left: 5px;
-            margin-right: 5px;
-        }
+.logo {
+  height: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
-        .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
-            background-color: white;
-            color: rgb(89, 197, 177);
-        }
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: white;
+  color: rgb(89, 197, 177);
+}
 
-        a {
-            color: rgb(26, 26, 26);
-        }
+a {
+  color: rgb(26, 26, 26);
+}
 
-        a:hover {
-            color: pink;
-        }
-        
-        
+a:hover {
+  color: pink;
+}
 
-        .btn-primary {
-            background-color: rgb(89, 197, 177);
-        }
+.btn-primary {
+  background-color: rgb(89, 197, 177);
+}
 
-        .modal-title {
-            text-align: center;
-        }
+.modal-title {
+  text-align: center;
+}
 
-        nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-        .detailAbout {
-            width: 40%;
-            text-align: right;
-        }
+.detailAbout {
+  width: 40%;
+  text-align: right;
+}
 
-        .rowAbout td {
-            padding: 5px;
-            border-color: rgb(241,250,248);
-        }
-        .chart:hover{
-            background-color: rgb(241,250,248)!important;
-        }
+.chart:hover {
+  background-color: rgb(241, 250, 248) !important;
+}
 
-        .card {
-            height: 200px;
-            width: 180px;
-            margin:5px;
-            padding: 5px;
-        }
-        .card-body{
-            background-color:rgb(241,250,248);
-        }
-        .training{
-            background-color: rgb(252,232,235);
-            padding:10px;
-        }
+.card {
+  height: 200px;
+  width: 180px;
+  margin: 5px;
+  padding: 5px;
+}
+.card-body {
+  background-color: #ebebeb;
+}
+/* .training{
+            background-color: rgb(242,113,136);
+        } */
 
-        .card-title{
-            font-size: 14px;
-            margin-bottom: 0px;
-        }
-        .card-text{
-            font-size: 12px;
-            margin-bottom: 0px;
-        }
-        .card-cat {
-            font-size: 12px;
-            
-        }
-        .card-img-top{
-            margin: auto;
-            width:  170px;
-            height: 130px;
-            object-fit: cover;
-        }
+.card-title {
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.card-text {
+  font-size: 12px;
+  margin-bottom: 0px;
+  color: black;
+}
+.card-cat {
+  font-size: 12px;
+}
+.card-img-top {
+  margin: auto;
+  width: 170px;
+  height: 130px;
+  object-fit: cover;
+}
 
-        .badges{
-            width: 28px;
-            height: 28px;
-            margin: 3px;
-        }
-        .assess{
-            width: 350px!important;
-            height: 300px!important;
-        }
+.badges {
+  width: 28px;
+  height: 28px;
+  margin: 3px;
+}
+.assess {
+  width: 350px !important;
+  height: 300px !important;
+}
 
+.proceed {
+  background-color: rgb(244, 74, 64);
+  color: white;
+  margin-bottom: 0px;
+}
 
-        .proceed {
-            background-color:rgb(89, 197, 177);
-            color: white; 
-            margin-bottom: 0px;
-        }
+.tproceed {
+  background-color: rgb(127, 174, 242);
+  color: black;
+  margin-bottom: 0px;
+}

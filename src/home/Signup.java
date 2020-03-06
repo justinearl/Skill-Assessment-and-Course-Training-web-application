@@ -5,11 +5,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+
 import java.security.*;
 
 /**
@@ -34,20 +44,6 @@ public class Signup extends HttpServlet {
 		String last = request.getParameter("lastName");
 		String email = request.getParameter("signEmail");
 		String password = request.getParameter("signPassword");
-//		try {
-//			MessageDigest alg = MessageDigest.getInstance("MD5");
-//			alg.update(password.getBytes());
-//			byte[] digest = alg.digest();
-//			StringBuffer hashedpasswd = new StringBuffer();
-//			String hx;
-//			for (int i=0;i<digest.length;i++){
-//				hx =  Integer.toHexString(0xFF & digest[i]);
-//				if(hx.length() == 1){hx = "0" + hx;}
-//				hashedpasswd.append(hx);
-//			}
-//		} catch (NoSuchAlgorithmException e1) {
-//			e1.printStackTrace();
-//		}
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		} catch (ClassNotFoundException e) {

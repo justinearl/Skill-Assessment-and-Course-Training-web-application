@@ -2,6 +2,10 @@
     pageEncoding="ISO-8859-1"%>
     <%@page  language="java" import="java.security.MessageDigest"%>
     <%@ page session="true" %>
+    <% response.setHeader("Cache-Control","no-cache"); //HTTP 1.1 
+ response.setHeader("Pragma","no-cache"); //HTTP 1.0 
+ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server  
+%>
 <%if(session.getAttribute("sessionID") == null) {%>
 <html>
   <head>
@@ -97,7 +101,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="Login">
+            <form method="POST" action="Login.jsp">
               <div class="form-group">
                 <input
                   type="email"
@@ -172,7 +176,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="Signup">
+            <form method="POST" action="signup.jsp">
               <div class="row">
                 <div class="col">
                   <input

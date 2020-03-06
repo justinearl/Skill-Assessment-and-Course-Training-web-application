@@ -44,4 +44,34 @@
     <servlet-name>ProfileController</servlet-name>
     <url-pattern>/ProfileController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUploadHandler</display-name>
+    <servlet-name>FileUploadHandler</servlet-name>
+    <servlet-class>fileUpload.FileUploadHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadHandler</servlet-name>
+    <url-pattern>/FileUploadHandler</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>imgUpload</display-name>
+    <servlet-name>imgUpload</servlet-name>
+    <servlet-class>fileUpload.imgUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imgUpload</servlet-name>
+    <url-pattern>/imgUpload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>sasa</display-name>
+    <servlet-name>sasa</servlet-name>
+    <servlet-class>fileUpload.sasa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sasa</servlet-name>
+    <url-pattern>/sasa</url-pattern>
+  </servlet-mapping>
 </web-app>
