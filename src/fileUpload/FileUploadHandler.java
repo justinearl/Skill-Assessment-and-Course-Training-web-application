@@ -41,11 +41,7 @@ public class FileUploadHandler extends HttpServlet {
 		}
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
-		File pat = new File("C:\\final\\WebContent\\images\\test.png");
-		Path imagesPath = Paths.get("C:\\final\\WebContent\\images\\test.png");
-		if (pat.exists()) {
-			Files.delete(imagesPath);
-		}
+		
 
 		try {
 			List<FileItem> fields = upload.parseRequest(request);
