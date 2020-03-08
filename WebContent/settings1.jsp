@@ -14,8 +14,8 @@ if(session.getAttribute("sessionID") == null){
 					PreparedStatement ps;
 						String id = (String) request.getSession().getAttribute("sessionID");
 
-						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-						Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+						Class.forName("com.mysql.jdbc.Driver").newInstance();
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 						ps = con.prepareStatement("Select * from User where ID = ?");
 						ps.setString(1, id);
 						ResultSet rs = ps.executeQuery();

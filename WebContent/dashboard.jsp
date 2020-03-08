@@ -96,9 +96,9 @@
 								<%
 								
 								PreparedStatement ps1;
-									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-									Connection con1 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-									ps1 = con1.prepareStatement("Select COUNT(ID) from User");
+								Class.forName("com.mysql.jdbc.Driver").newInstance();
+								Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+									ps1 = con.prepareStatement("Select COUNT(ID) from User");
 									ResultSet rs1 = ps1.executeQuery();
 									while (rs1.next()) {
 										out.print(rs1.getString(1));
@@ -117,9 +117,8 @@
 								<h2 class="number" id="assessment"><%
 								
 								PreparedStatement ps2;
-									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-									Connection con2 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-									ps2 = con2.prepareStatement("Select COUNT(ID) from assessmentList");
+									
+									ps2 = con.prepareStatement("Select COUNT(ID) from assessmentList");
 									ResultSet rs2 = ps2.executeQuery();
 									while (rs2.next()) {
 										out.print(rs2.getString(1));
@@ -136,9 +135,8 @@
 								<h2 class="number" id="trainings"><%
 								
 								PreparedStatement ps3;
-									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-									Connection con3 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-									ps3 = con3.prepareStatement("Select COUNT(ID) from trainingList");
+									
+									ps3 = con.prepareStatement("Select COUNT(ID) from trainingList");
 									ResultSet rs3 = ps3.executeQuery();
 									while (rs3.next()) {
 										out.print(rs3.getString(1));
@@ -153,7 +151,7 @@
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--red">
 								<h2 class="number" id="feedback"><%
-								ps3 = con3.prepareStatement("Select COUNT(ID) from feedback");
+								ps3 = con.prepareStatement("Select COUNT(ID) from feedback");
 								rs3 = ps3.executeQuery();
 								while (rs3.next()) {
 									out.print(rs3.getString(1));
@@ -197,8 +195,7 @@
 
 											<%
 												PreparedStatement ps;
-													Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-													Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+													
 													ps = con.prepareStatement("Select * from User");
 													ResultSet rs = ps.executeQuery();
 													while (rs.next()) {

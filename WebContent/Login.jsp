@@ -28,9 +28,8 @@
 			
 			//logActivity
 			
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-				Connection con = DriverManager
-						.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 			
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 			String dd = formatter.format(new Date());
@@ -50,8 +49,8 @@
 			/*HttpSession session = //request.getSession(); */
 			PreparedStatement ps;
 			//try {
-				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-				Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 				ps = con.prepareStatement("Select * from User  where email = ? and password = ?");
 				ps.setString(1, email);
 				ps.setString(2, pass);

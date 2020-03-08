@@ -27,7 +27,8 @@ if(session.getAttribute("sessionID") == null){
 	String user = session.getAttribute("sessionID").toString();
 	
 	try {
-		Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 		Statement sta = con.createStatement();
 		sta.executeUpdate("UPDATE user SET firstname = "+ "'"+ nf +"'" +", middlename = "+ "'"+ nm +"'" + ",lastname="+"'"+nl+"'"+",email ="+"'"+nE+"'"+",course = "+"'"+nC+"'"+",school ="+"'"+nS+"'"+" WHERE ID = "+user);
 		
@@ -40,7 +41,6 @@ if(session.getAttribute("sessionID") == null){
 				String act = "User "+nf+" Edit Details";
 				
 				PreparedStatement logQue;
-				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 				logQue = con.prepareStatement("Insert into logs (logDate, logActivity, logBy) values(?,?,?)");
 				logQue.setString(1,dd);
 				logQue.setString(2,act);

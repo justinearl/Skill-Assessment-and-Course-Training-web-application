@@ -13,8 +13,8 @@ if(session.getAttribute("sessionID") == null){
 					int hard = 0, soft = 0, eng = 0, math = 0, uScore = 0;
 						String id = (String) request.getSession().getAttribute("sessionID");
 
-						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-						Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+						Class.forName("com.mysql.jdbc.Driver").newInstance();
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 						
 						bar = con.prepareStatement("Select * from assessmentCompleted where uid = ?");
 						bar.setString(1, id);
@@ -173,7 +173,7 @@ if(session.getAttribute("sessionID") == null){
                         <h4 style="color: white; " >ASSESSMENTS</h4><br>
                         <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap;">
                             <%
-								Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						
 									ps = con.prepareStatement("Select * from assessmentCompleted where uid = ?");
 									ps.setString(1, id);
 									rs = ps.executeQuery();
@@ -183,9 +183,8 @@ if(session.getAttribute("sessionID") == null){
                             <%
                             PreparedStatement ps2;
 
-						    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-						    Connection con2 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-						    ps2 = con2.prepareStatement("Select * from assessmentList where assesscode = ?");
+						   
+						    ps2 = con.prepareStatement("Select * from assessmentList where assesscode = ?");
 						    ps2.setString(1, rs.getString(2));
                             ResultSet rs2 = ps2.executeQuery();
                             String img1 = null;
@@ -216,7 +215,7 @@ if(session.getAttribute("sessionID") == null){
                     <h4 style="color: white; ">TRAININGS</h4><br>
                         <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap;">
                             <%
-                            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                            
                                 ps = con.prepareStatement("Select * from trainingEnrolled where uid = ?");
                                 ps.setString(1, id);
                                 rs = ps.executeQuery();
@@ -225,9 +224,8 @@ if(session.getAttribute("sessionID") == null){
                             <%
                             PreparedStatement ps1;
                             String tuid = rs.getString(2);
-						    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-						    Connection con1 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-						    ps1 = con1.prepareStatement("Select * from trainingList where trainingCode = ?");
+						    
+						    ps1 = con.prepareStatement("Select * from trainingList where trainingCode = ?");
 						    ps1.setString(1, tuid);
                             ResultSet rs1 = ps1.executeQuery();
                             String img = null;

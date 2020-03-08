@@ -9,8 +9,8 @@
  
  String user = session.getAttribute("sessionID").toString();
  
- 	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-	Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+ Class.forName("com.mysql.jdbc.Driver").newInstance();
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 	PreparedStatement as;
 	as = con.prepareStatement("Insert into classList (className, classDesc, date) values(?,?,?)");
 	as.setString(1,subj);

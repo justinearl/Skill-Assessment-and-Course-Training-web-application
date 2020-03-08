@@ -24,7 +24,8 @@ System.out.println(ava);
 	System.out.println(user);
 	
 	try {
-		Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 		Statement sta = con.createStatement();
 		sta.executeUpdate("UPDATE user SET avatar = "+ ava +" WHERE ID = "+user);
 		
@@ -36,7 +37,6 @@ System.out.println(ava);
 		String act = "User "+user+" changed avatar";
 		
 		PreparedStatement logQue;
-		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		logQue = con.prepareStatement("Insert into logs (logDate, logActivity, logBy) values(?,?,?)");
 		logQue.setString(1,dd);
 		logQue.setString(2,act);

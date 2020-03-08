@@ -56,9 +56,9 @@
 <%if(session.getAttribute("sessionID") == null) {%>
 <%
 PreparedStatement pse;
-Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-Connection cone = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-pse = cone.prepareStatement("Select * from User");
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+pse = con.prepareStatement("Select * from User");
 ResultSet rse = pse.executeQuery();
 while (rse.next()) {
 %>

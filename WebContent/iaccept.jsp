@@ -28,7 +28,8 @@ if(session.getAttribute("sessionID") == null){
 	
 	try {
 		PreparedStatement ps;
-		Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 		ps = con.prepareStatement("update user set confirmation='true'  where ID = ?");
 		ps.setString(1, user);
 		ps.executeUpdate();

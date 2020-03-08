@@ -17,20 +17,21 @@
 
 	String dateT = simpleDateFormat.format(new Date());
 	PreparedStatement ps1;
-	Connection con1 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-				ps1 = con1.prepareStatement("Select * from User  where email = ? ");
+	Class.forName("com.mysql.jdbc.Driver").newInstance();
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+				ps1 = con.prepareStatement("Select * from User  where email = ? ");
 				ps1.setString(1, email);
 				ResultSet rs1 = ps1.executeQuery();
 	if(!rs1.next()){
 		try {
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (ClassNotFoundException e) {
 	
 			e.printStackTrace();
 		}
 	
 		try {
-			Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+			
 			Statement sta = con.createStatement();
 			sta.executeUpdate("INSERT INTO user (email, password, firstname, lastname, vkey, dateReg, avatar)  VALUES ('" + email
 					+ "','" + password + "','" + first + "','" + last + "','" + vkey + "','" + dateT + "','" + a +"')");

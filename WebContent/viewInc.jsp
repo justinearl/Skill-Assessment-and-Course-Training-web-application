@@ -95,9 +95,9 @@
 								<%
 								
 								PreparedStatement ps1;
-									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-									Connection con1 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-									ps1 = con1.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='true'");
+								Class.forName("com.mysql.jdbc.Driver").newInstance();
+								Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+									ps1 = con.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='true'");
 									
 									ResultSet rs1 = ps1.executeQuery();
 									while (rs1.next()) {
@@ -117,9 +117,8 @@
 								<h2 class="number" id="assessment"><%
 								
 								PreparedStatement ps2;
-									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-									Connection con2 = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
-									ps2 = con2.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='false'");
+									
+									ps2 = con.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='false'");
 									ResultSet rs2 = ps2.executeQuery();
 									while (rs2.next()) {
 										out.print(rs2.getString(1));
@@ -165,8 +164,7 @@
 
 											<%
 												PreparedStatement ps;
-													Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-													Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+													
 													ps = con.prepareStatement("Select * from User where userRole = 'inc'");
 													ResultSet rs = ps.executeQuery();
 													while (rs.next()) {

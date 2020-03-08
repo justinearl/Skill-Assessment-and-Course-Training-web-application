@@ -22,8 +22,8 @@
 		PreparedStatement a,b;
 		ResultSet x,y;
 		try{
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-			Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 			a = con.prepareStatement("Select * from User  where email = ? ");
 			a.setString(1, email);
 			x = a.executeQuery();

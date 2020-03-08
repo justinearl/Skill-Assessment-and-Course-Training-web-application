@@ -1,45 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%> <%@page language="java"
-import="java.security.MessageDigest"%> <%@ page session="true" %> <%
-response.setHeader("Pragma", "No-cache"); response.setHeader("Cache-Control",
-"no-cache, no-store, must-revalidate"); response.setDateHeader("Expires", -1);
-%> <% if(session.getAttribute("sessionID") == null){
-response.sendRedirect("index.jsp"); }else { 
-	String att = request.getParameter("attempt");
-	
-	if(att == null){
-		response.sendRedirect("assessment1.jsp");
-	}else{
-		int checkAttempt = Integer.parseInt(att);
-	if(!(checkAttempt > 0)){
-		response.sendRedirect("assessment1.jsp");
-	}
-	}
+	pageEncoding="ISO-8859-1"%>
+<%@page language="java" import="java.security.MessageDigest"%>
+<%@ page session="true"%>
+<%
+	response.setHeader("Pragma", "No-cache");
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.setDateHeader("Expires", -1);
+%>
+<%
+	if (session.getAttribute("sessionID") == null) {
+		response.sendRedirect("index.jsp");
+	} else {
+		String att = request.getParameter("attempt");
+
+		if (att == null) {
+			response.sendRedirect("assessment1.jsp");
+		} else {
+			int checkAttempt = Integer.parseInt(att);
+			if (!(checkAttempt > 0)) {
+				response.sendRedirect("assessment1.jsp");
+			}
+		}
 %>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Basic Circuits</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker" >
+<meta charset="utf-8">
+<title>Basic Circuits</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet prefetch"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet prefetch"
+	href="https://fonts.googleapis.com/css?family=Coda">
+<link rel="stylesheet prefetch"
+	href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
 
-    <style>
-    html {
+<style>
+html {
 	box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
 	box-sizing: inherit;
 }
 
-html,
-body {
+html, body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -63,14 +69,9 @@ h1 {
 	font-family: 'Gloria Hallelujah', cursive;
 }
 
-
-
-
 /*
  * Styles for the deck of cards
  */
-
-
 .deck {
 	width: 85%;
 	background: #716F71;
@@ -134,15 +135,12 @@ h1 {
 .deck .card.disabled {
 	pointer-events: none;
 	opacity: 0.9;
-    font-size: 16px;
+	font-size: 16px;
 }
-
 
 /*
  * Styles for the Score Panel
  */
-
-
 .score-panel {
 	text-align: left;
 	margin-bottom: 10px;
@@ -174,12 +172,9 @@ h1 {
 	margin: 0 1rem;
 }
 
-
 /*
  * Styles for congratulations modal
  */
-
-
 .overlay {
 	position: fixed;
 	top: 0;
@@ -196,7 +191,7 @@ h1 {
 	visibility: visible;
 	opacity: 1;
 }
-  
+
 .popup {
 	margin: 70px auto;
 	padding: 20px;
@@ -207,7 +202,7 @@ h1 {
 	transition: all 5s ease-in-out;
 	font-family: 'Gloria Hallelujah', cursive;
 }
-  
+
 .popup h2 {
 	margin-top: 0;
 	color: #333;
@@ -230,12 +225,11 @@ h1 {
 }
 
 .content-2 {
-    font-size: 20px;
-    background-color: white;
+	font-size: 20px;
+	background-color: white;
 }
 
-.popup .content-1,
-.content-2 {
+.popup .content-1, .content-2 {
 	max-height: 30%;
 	overflow: auto;
 	text-align: center;
@@ -275,217 +269,329 @@ h1 {
 }
 
 /* animations */
-@keyframes flipInY {
-	from {
-		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-		animation-timing-function: ease-in;
-		opacity: 0;
-	}
-
-	40% {
-		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-		animation-timing-function: ease-in;
-	}
-
-	60% {
-		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-		opacity: 1;
-	}
-
-	80% {
-		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	}
-
-	to {
-		transform: perspective(400px);
-	}
+@
+keyframes flipInY {from { transform:perspective(400px)rotate3d(0, 1, 0,
+	90deg);
+	animation-timing-function: ease-in;
+	opacity: 0;
 }
 
-@keyframes rubberBand {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
+40%
+{
+transform
+:
+ 
+perspective
+(400px)
+ 
+rotate3d
+(0
+,
+1,
+0,
+-20
+deg
+);
 
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
+		
+animation-timing-function
+:
+ 
+ease-in
+;
 
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
+	
+}
+60%
+{
+transform
+:
+ 
+perspective
+(400px)
+ 
+rotate3d
+(0
+,
+1,
+0,
+10
+deg
+);
 
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
+		
+opacity
+:
+ 
+1;
+}
+80%
+{
+transform
+:
+ 
+perspective
+(400px)
+ 
+rotate3d
+(0
+,
+1,
+0,
+-5
+deg
+);
 
-	65% {
-		transform: scale3d(.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, .95, 1);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
+	
+}
+to {
+	transform: perspective(400px);
 }
 
-@keyframes pulse {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	50% {
-		transform: scale3d(1.2, 1.2, 1.2);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
+}
+@
+keyframes rubberBand {from { transform:scale3d(1, 1, 1);
+	
 }
 
+30%
+{
+transform
+:
+ 
+scale3d
+(1
+.25
+,
+0
+.75
+,
+1);
+}
+40%
+{
+transform
+:
+ 
+scale3d
+(0
+.75
+,
+1
+.25
+,
+1);
+}
+50%
+{
+transform
+:
+ 
+scale3d
+(1
+.15
+,
+0
+.85
+,
+1);
+}
+65%
+{
+transform
+:
+ 
+scale3d
+(
+.95
+,
+1
+.05
+,
+1);
+}
+75%
+{
+transform
+:
+ 
+scale3d
+(1
+.05
+,
+.95
+,
+1);
+}
+to {
+	transform: scale3d(1, 1, 1);
+}
+
+}
+@
+keyframes pulse {from { transform:scale3d(1, 1, 1);
+	
+}
+
+50%
+{
+transform
+:
+ 
+scale3d
+(1
+.2
+,
+1
+.2
+,
+1
+.2
+);
+
+	
+}
+to {
+	transform: scale3d(1, 1, 1);
+}
+
+}
 
 /****** Media queries
 ***************************/
-
-
-@media (max-width: 320px) {
+@media ( max-width : 320px) {
 	.deck {
 		width: 85%;
 	}
-
 	.deck .card {
 		height: 4.7rem;
 		width: 4.7rem;
 	}
 }
 
-
 /* For Tablets and larger screens
 ****************/
-
-@media (min-width: 768px) {
+@media ( min-width : 768px) {
 	.container {
 		font-size: 22px;
 	}
-
 	.deck {
 		width: 660px;
 		height: 680px;
 	}
-
 	.deck .card {
 		height: 125px;
 		width: 125px;
 	}
-
 	.popup {
 		width: 60%;
-        font-size: 2px;
+		font-size: 2px;
 	}
 }
-
-
-    </style>
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Match the elecrical quantity and its unit!</h1>
-        </header>
+	<div class="container">
+		<header>
+			<h1>Match the elecrical quantity and its unit!</h1>
+		</header>
 
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+		<section class="score-panel">
+			<ul class="stars">
+				<li><i class="fa fa-star"></i></li>
+				<li><i class="fa fa-star"></i></li>
+				<li><i class="fa fa-star"></i></li>
+			</ul>
 
-        	<span class="moves">0</span> Move(s)
+			<span class="moves">0</span> Move(s)
 
-            <div class="timer">
-            </div>
+			<div class="timer"></div>
 
-            <div class="restart" onclick=startGame()>
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
+			<div class="restart" onclick=startGame()>
+				<i class="fa fa-repeat"></i>
+			</div>
+		</section>
 
-        <ul class="deck" id="card-deck">
-            <li class="card" type="current">
-               <p>Current</p>
-            </li>
-            <li class="card" type="resis">
-                <p>Resistance</p>
-            </li>
-            <li class="card match" type="watt">
-                <p>Electric<br>Power</p>
-            </li>
-            <li class="card" type="cap" >
-                <p>Capacitance</p>
-            </li>
-            <li class="card" type="induc">
-                <p>Inductance</p>
-            </li>
-            <li class="card match" type="watt">
-                <p>Watt</p>
-            </li>
-            <li class="card" type="volt">
-                <p>Voltage</p>
-            </li>
-            <li class="card" type="admit">
-                <p>mho</p>
-            </li>
-            <li class="card" type="current">
-                <p>Ampere</p>
-            </li>
-            <li class="card" type="conduc">
-                <p>Conductance</p>
-            </li>
-            <li class="card" type="conduc">
-                <p>siemens</p>
-            </li>
-            <li class="card" type="volt">
-                <p>Volt</p>
-            </li>
-            <li class="card open show" type="cap">
-                <p>Farad</p>
-            </li>
-            <li class="card" type="admit">
-                <p>Admittance</p>
-            </li>
-            <li class="card" type="resis">
-                <p>Ohm</p>
-            </li>
-            <li class="card" type="induc">
-                <p>Henry</p>
-            </li>
-        </ul>
+		<ul class="deck" id="card-deck">
+			<li class="card" type="current">
+				<p>Current</p>
+			</li>
+			<li class="card" type="resis">
+				<p>Resistance</p>
+			</li>
+			<li class="card match" type="watt">
+				<p>
+					Electric<br>Power
+				</p>
+			</li>
+			<li class="card" type="cap">
+				<p>Capacitance</p>
+			</li>
+			<li class="card" type="induc">
+				<p>Inductance</p>
+			</li>
+			<li class="card match" type="watt">
+				<p>Watt</p>
+			</li>
+			<li class="card" type="volt">
+				<p>Voltage</p>
+			</li>
+			<li class="card" type="admit">
+				<p>mho</p>
+			</li>
+			<li class="card" type="current">
+				<p>Ampere</p>
+			</li>
+			<li class="card" type="conduc">
+				<p>Conductance</p>
+			</li>
+			<li class="card" type="conduc">
+				<p>siemens</p>
+			</li>
+			<li class="card" type="volt">
+				<p>Volt</p>
+			</li>
+			<li class="card open show" type="cap">
+				<p>Farad</p>
+			</li>
+			<li class="card" type="admit">
+				<p>Admittance</p>
+			</li>
+			<li class="card" type="resis">
+				<p>Ohm</p>
+			</li>
+			<li class="card" type="induc">
+				<p>Henry</p>
+			</li>
+		</ul>
 
-        <div id="popup1" class="overlay">
-            <div class="popup">
-                <a class="close" href=# >x</a>
-                <div class="content-1">
-                    Congratulations you're a winner
- 				</div>
-                <div class="content-2">
-                    <p>You made <span id=finalMove> </span> moves </p>
-                    <p>in <span id=totalTime> </span> </p>
-                    <p>Rating:  <span id=starRating></span></p>
-                </div>
-                <!-- <button id="play-again"onclick="playAgain()">
+		<div id="popup1" class="overlay">
+			<div class="popup">
+				<a class="close" href=#>x</a>
+				<div class="content-1">Congratulations you're a winner</div>
+				<div class="content-2">
+					<p>
+						You made <span id=finalMove> </span> moves
+					</p>
+					<p>
+						in <span id=totalTime> </span>
+					</p>
+					<p>
+						Rating: <span id=starRating></span>
+					</p>
+				</div>
+				<!-- <button id="play-again"onclick="playAgain()">
                     Play again</a>
                 </button> -->
-                <button id="submit"onclick="submitScore()">
-                    Next</a>
-                </button>
-            </div>
-        </div>
+				<button id="submit" onclick="submitScore()">
+					Next</a>
+				</button>
+			</div>
+		</div>
 
-    </div>
-    <script>
+	</div>
+	<script>
         // cards array holds all cards
 let card = document.getElementsByClassName("card");
 let cards = [...card];
@@ -744,4 +850,6 @@ for (var i = 0; i < cards.length; i++){
 
 </body>
 </html>
-<%}%>
+<%
+	}
+%>
