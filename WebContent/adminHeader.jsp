@@ -1,11 +1,28 @@
 <!-- HEADER DESKTOP-->
+
+
+<%@ page import="java.sql.*"%>
+<%
+PreparedStatement psx;
+ResultSet rsx;
+String logoimgss = null;
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+psx = conx.prepareStatement("Select * from webcontent where webpart = ?");
+psx.setString(1, "logo1");
+rsx = psx.executeQuery();
+if(rsx.next()){
+	logoimgss = rsx.getString(5);
+}
+%>
 		<header class="header-desktop3 d-none d-lg-block"
 			style="background-color: white">
 			<div class="section__content section__content--p35"
 				style="background-color: white">
 				<div class="header3-wrap">
 					<div class="header__logo">
-						<a href="dashboard.jsp"> <img src="images/test.png" class="logo"
+						<a href="dashboard.jsp"> <img src="<%=rsx.getString(5) %>" class="logo"
 							style="height: 50px" alt="SACT" />
 						</a>
 					</div>

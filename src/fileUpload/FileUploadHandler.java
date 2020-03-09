@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.io.File;
 
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -77,10 +74,12 @@ public class FileUploadHandler extends HttpServlet {
 						}
 						fileItem.write(new File("C:\\final\\WebContent\\images\\"+sb.toString()+".png"));
 
-						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-						Connection con = DriverManager
-								.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+						Class.forName("com.mysql.jdbc.Driver").newInstance();
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 						
+						PreparedStatement ps;
+						ps = con.prepareStatement("update webcontent set link = ? where webpart = 'logo1'");
+						ps.setString(1, "C:\\final\\webcontent\\images\\" + sb.toString() +".png");
 						
 						response.sendRedirect("cmsAdmin.jsp");
 

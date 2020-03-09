@@ -184,7 +184,7 @@ if(session.getAttribute("sessionID") == null){
             <div class="row">
                 <div class=" col-md-2 col-lg-4">
                     <div class="single_footer_part">
-                        <a href="home.html" class="footer_logo_iner"> <img src="images/test.png" style="height: 75px"alt="#"> </a>
+                        <a href="home.html" class="footer_logo_iner"> <img src="<%=rsx.getString(5) %>" style="height: 75px"alt="#"> </a>
                         <p>Skills Assessment and Course Training Web Application
                         </p>
                     </div>

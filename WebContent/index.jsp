@@ -55,6 +55,19 @@
 <body>
 <%if(session.getAttribute("sessionID") == null) {%>
 <%
+PreparedStatement psx;
+ResultSet rsx;
+String logoimg = null;
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+psx = conx.prepareStatement("Select * from webcontent where webpart = ?");
+psx.setString(1, "logo1");
+rsx = psx.executeQuery();
+if(rsx.next()){
+	logoimg = rsx.getString(5);
+}
+
 PreparedStatement pse;
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
@@ -71,8 +84,8 @@ while (rse.next()) {
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="images/logo.png" style="height:60px;margin-bottom:10px" alt="logo"> </a>
-                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="img/footer_logo.png" alt="logo"> </a>
+                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="<%=rsx.getString(5) %>" style="height:60px;margin-bottom:10px" alt="logo"> </a>
+                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="<%=rsx.getString(5) %>" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -224,7 +237,7 @@ while (rse.next()) {
             <div class="row">
                 <div class=" col-md-2 col-lg-4">
                     <div class="single_footer_part">
-                        <a href="index.jsp" class="footer_logo_iner"> <img src="images/test.png" style="height: 75px"alt="#"> </a>
+                        <a href="index.jsp" class="footer_logo_iner"> <img src="<%=rsx.getString(5) %>" style="height: 75px"alt="#"> </a>
                         <p>Skills Assessment and Course Training Web Application
                         </p>
                     </div>

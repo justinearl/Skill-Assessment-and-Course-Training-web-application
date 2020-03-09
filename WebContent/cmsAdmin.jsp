@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page session="true"%>
+    <%@ include file="imports.jsp" %>
 <%        
 response.setHeader("Pragma", "No-cache");
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -10,6 +11,19 @@ response.setDateHeader("Expires", -1);
 	if (session.getAttribute("sessionID") == null) {
 		response.sendRedirect("index.jsp");
 	} else if(session.getAttribute("sessionID") == "admin"){
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		String logoimg = null;
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+		
+		ps = con.prepareStatement("Select * from webcontent where webpart = ?");
+		ps.setString(1, "logo1");
+		rs = ps.executeQuery();
+		if(rs.next()){
+			logoimg = rs.getString(5);
+		}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +118,7 @@ response.setDateHeader("Expires", -1);
                 <div>
                 <p>Current Logo</p>
                 <img
-                  src="images/test.png"
+                  src="<%=logoimg %>"
                   class="logo"
                   style="height: 50px"
                   alt="SACT"
@@ -135,7 +149,7 @@ response.setDateHeader("Expires", -1);
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="FileUploadHandler" enctype="multipart/form-data">
+      <form method="post" action="insertImage.jsp" enctype="multipart/form-data">
       <div class="modal-body">
       
         <input type="file" id="myFile" accept="image/*" name="uploadFile">

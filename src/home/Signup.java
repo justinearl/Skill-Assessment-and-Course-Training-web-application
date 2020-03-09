@@ -45,14 +45,15 @@ public class Signup extends HttpServlet {
 		String email = request.getParameter("signEmail");
 		String password = request.getParameter("signPassword");
 		try {
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();
 		}
 
         try {
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\Asus\\Documents\\OOP.accdb");
+        
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
             Statement sta = con.createStatement();
 //            sta.executeUpdate("INSERT INTO details (first,middle,last,gender,subj,yr,sec,color) VALUES ('"+first+"','"+middle+"','"+last+"','"+gender+"','"+subj+"','"+yr+"','"+sec+"','"+color+"');
             sta.executeUpdate("INSERT INTO user"
