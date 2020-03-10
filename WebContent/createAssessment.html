@@ -71,8 +71,8 @@
     </header>
 
     <!-- breadcrumb start-->
-    <section class="breadcrumb breadcrumb_bg">
-        <div class="container">
+    <section class="breadcrumb breadcrumb_bg" style="height: 100px;">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner text-center">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <!-- breadcrumb start-->
 
@@ -90,26 +90,41 @@
         <div style="display:flex">
         <div class="container" id="userAbout" style="margin-right: 30px; margin-left: 30px; padding:25px 25px 25px 25px;background-color: rgb(127,174,242); width: 300px">
             <img src="avatar/6.png" class="userAvatar" style="width: 250px; height: 250px;">
-            <h4 style="color: black; margin-top: 10px; margin-bottom: 0px; font-size:30px;" class="text-center"
-                id="fullName">Juan Dela Cruz</h4>
-            <p style="color: black" class="text-center" id="emailAdd">juandelacruz@email.com</p>
+            <h4 style="color: black; margin-top: 10px; margin-bottom: 0px; font-size:25px;" class="text-center"
+                id="assessTitle">Circuits Chapter 1</h4>
+            <!-- <p style="color: black" class="text-center" id="assessTitle">Circuits Chapter 1</p> -->
             <table class="table">
                 <tbody style="color: black; font-size:12px;">
                     <tr class="rowAbout">
-                        <td class="detailAbout">Total Assessments</td>
-                        <td id="totalAssess">5</td>
+                        <td class="detailAbout">Assessment Type</td>
+                        <td id="assessType">Exam</td>
                     </tr>
                     <tr class="rowAbout">
-                        <td class="detailAbout">Total Students</td>
-                        <td id="students">190</td>
+                        <td class="detailAbout">Accessibility</td>
+                        <td id="assessAccess">Private</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     <div style="background-color: rgb(241,250,248); width: 80%; height:100%;  padding: 30px; padding-left: 0px;">
             <div class="container" style="padding:0px; margin: 0px;">
-               
-                <div class="container" style="display: flex; margin-left: 35px;padding: 0px;">
+               <div class="container" style="width: 100%; height: auto; border: solid 1px rgb(127,174,242); padding-top: 10px; margin-left: 10px;">
+                    <div style="display: flex">
+                    <h3>Part 1</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div style=" padding-top: 5px;">
+                         <label class="radio-inline">
+                            <input type="radio" id="multiChoice" name="part1Type">Multiple Choice
+                          </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <label class="radio-inline">
+                            <input type="radio" id="identi" name="part1Type">Identification
+                          </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <label class="radio-inline">
+                            <input type="radio" id="matchy" name="part1Type">Matching Type
+                          </label>
+                        </div>
+                    </div>
+            </div>
+                <!-- <div class="container" style="display: flex; margin-left: 35px;padding: 0px;">
                     <button type="button" class="btn btn-secondary" style="width: 500px;" data-toggle="modal" data-target="#addAssessmentModal">+ Add Assessment</button>
                
                     <div class="container" style="display: flex; margin-left: 50%; margin-right: 0px;padding: 0px;">
@@ -120,9 +135,9 @@
                                 <option>By Assessment Type</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
         
-        <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 25px; padding-left: 30px;">
+        <!-- <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 25px; padding-left: 30px;">
                         <div class="card assess" style="width: 300px!important;">
                                 <img src="images/home.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -154,7 +169,7 @@
                 
                   
                     
-                    </div>
+                    </div> -->
                     </div>
 
     
@@ -178,67 +193,7 @@ Copyright &copy;2019 All rights reserved.</P>,
     <!--::footer_part end::-->
 
     <!-- MODALS -->
-    <div class="modal fade" id="addAssessmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 5%;">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(59,19,176); border-radius: 0px;">
-              <h5 class="modal-title" style="color: white;   margin: auto;">ADD NEW ASSESSMENT</h5>
-              
-            </div>
-            <div class="modal-body">
-              <form  method="post">
-                  <label for="atitle">Assessment Title</label>
-                  <input type=text class="form-control" id="atitle" name="atitle" placeholder="Ex. Circuit Analysis">
-
-                  <label for="subject">Subject Category</label>
-                  <select class="form-control" id="subject">
-                    <option>Circuits</option>
-                    <option>Electronics</option>
-                    <option>Programming</option>
-                    <option>Logic Circuits</option>
-                    <option>General Engineering</option>
-                    
-                  </select>
-
-                
-                        <label for="assessType">Assessment Type</label>
-                        <select class="form-control" id="assessType">
-                            <option>Activity</option>
-                            <option>Short Quiz</option>
-                            <option>Examination</option>
-                          </select>
-                         <br>
-                          
-                         
-                          
-                 <div class="row">
-                    <div class="col-md-4">
-                        <label for="accessibility">Accessibility</label><br>
-                         <label class="radio-inline">
-                            <input type="radio" id="aPublic" name="accessibility" value="Public">Public
-                          </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <label class="radio-inline">
-                            <input type="radio" id="aPrivate" name="accessibility" value="Private">Private
-                          </label>
-                    </div>
-                    <div class="col">
-                        <div id="addKey" style="display:none">
-                            <label for="key">Assessment Key</label>
-                            <input type="text" class="form-control" id="key" name="key"placeholder="Min. 8 characters - Max. 64 characters">
-                        </div>
-                    </div>
-                  </div>
-                   <input type="submit" value="Submit" id="classSubmit" hidden>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="closeModal" data-dismiss="modal">Close</button>
-              <button  class="btn btn-primary"  id="saveClass" href="newAssessment.html">Proceed</button>
-            </div>
-            
-          </div>
-        </div>
-      </div>
+  
     <!-- jquery plugins here-->
     <script src="js/jquery-1.12.1.min.js"></script>
     <!-- chart js  -->
