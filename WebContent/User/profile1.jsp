@@ -4,7 +4,7 @@
 <%@ include file="imports.jsp" %>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 }else {
 %>
 <%
@@ -97,9 +97,7 @@ if(session.getAttribute("sessionID") == null){
     <div class="tab-pane fade show" id="nav-prof" role="tabpanel" aria-labelledby="nav-prof-tab" style="padding-top:20px;">
         <div style="display:flex">
         <div class="container" id="userAbout" style="margin-left: 30px; padding:25px 25px 25px 25px;background-color: #ebebeb; width: 300px">
-            <img src="avatar/<%
-            out.print(ava);
-        %>.png" class="userAvatar" style="width: 250px; height: 250px;">
+            <img src=<%=request.getContextPath()+ "/avatar/1.png"%> class="userAvatar" style="width: 250px; height: 250px;">
             <h4 style="color: black; margin-top: 10px; margin-bottom: 0px; font-size:30px;" class="text-center"
                 id="fullName"><%
                 out.print(name);
@@ -128,7 +126,7 @@ if(session.getAttribute("sessionID") == null){
             <div class="container" style="width: 100%;padding-left:0;margin-left:0;">
                 <div style="width: 100%; height:60%;"><h6 style="color:black; ">Badges</h6>
                     <div class="container" style="display: flex; flex-flow: row wrap">
-                        <img src="icons\bar.jpg" class="badges">
+                        <img src=<%=request.getContextPath()+ "/icons/bar.jpg"%> class="badges">
                     </div>
                     </div><br>
                     <div style="width: 100%; height:40%"><h6 style="color: black; ">Points</h6>
@@ -145,7 +143,7 @@ if(session.getAttribute("sessionID") == null){
 							totalP += Integer.parseInt(rs8.getString(1));
 						}
                         %><%out.print(totalP); %>&nbsp;</h6>
-                        <img src="icons\star.png" style="height:20px;">
+                        <img src=<%=request.getContextPath()+"/icons/star.png" %> style="height:20px;">
                     </div>
                     </div>
             </div>
@@ -283,34 +281,7 @@ Copyright &copy;2019 All rights reserved.</P>,
     </footer>
     <!--::footer_part end::-->
     
-    <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- chart js  -->
-    <script src="libraries/Chart.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
+   <%@ include file="jsScriptUser.jsp" %>
     <script>
               
         $(document).ready(function(){

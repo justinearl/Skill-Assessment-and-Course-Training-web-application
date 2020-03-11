@@ -15,7 +15,7 @@
 <%@ page import="java.util.Random"%>
 <%
 	if (session.getAttribute("sessionID") == null) {
-		response.sendRedirect("index.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	} else {
 %>
 <%
@@ -92,7 +92,7 @@
 			}
 		}
 
-		response.sendRedirect("assessment1.jsp");
+		response.sendRedirect(request.getContextPath()+"/User/assessment1.jsp");
 %>
 <%
 	}

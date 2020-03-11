@@ -15,16 +15,14 @@
 <%@ page import="java.util.Date"%>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 }else {
 %>
 
 <%
 	String user = request.getParameter("id");
-// 	
+
     System.out.println(user);
-//     int foo = Integer.parseInt(user);
-//     System.out.println(foo);
 	
 	try {
 		PreparedStatement ps;
@@ -33,10 +31,6 @@ if(session.getAttribute("sessionID") == null){
 		ps = con.prepareStatement("delete from user where ID = ?");
 		ps.setString(1, user);
 		ps.executeUpdate();
-		
-// 		ps = con.prepareStatement("delete from feedback where uid = ?");
-// 		ps.setString(1, user);
-// 		ps.executeUpdate();
 
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 			String dd = formatter.format(new Date());
@@ -58,6 +52,6 @@ if(session.getAttribute("sessionID") == null){
 		}
 	}
 	
-	response.sendRedirect("viewInc.jsp?message=status");
+	response.sendRedirect(request.getContextPath()+"/Admin/dashboard.jsp?message=status");
 %>
 <%}%>

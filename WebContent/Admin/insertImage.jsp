@@ -75,7 +75,7 @@
 				ps.setString(1, "images\\"+filenm);
 				
 				ps.executeUpdate();
-				response.sendRedirect("cmsAdmin.jsp");
+				response.sendRedirect(request.getContextPath()+"/Admin/cmsAdmin.jsp");
             }
          }
     
@@ -83,13 +83,6 @@
          System.out.println(ex);
       }
    } else {
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<title>Servlet upload</title>");  
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<p>No file uploaded</p>"); 
-      out.println("</body>");
-      out.println("</html>");
+	   response.sendRedirect(request.getContextPath()+"/Admin/cmsAdmin.jsp");
    }
 %>

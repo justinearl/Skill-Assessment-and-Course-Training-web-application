@@ -28,5 +28,5 @@ logQue.executeUpdate();
 
 	session.removeAttribute("sessionID");
 	session.invalidate();
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 %>

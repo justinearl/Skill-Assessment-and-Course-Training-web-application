@@ -4,7 +4,7 @@
     <%@ include file="imports.jsp" %>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 }else {
 %>
 <!doctype html>
@@ -78,7 +78,7 @@ if(session.getAttribute("sessionID") == null){
 			</div>
 			<div style="display: flex">
 				<div>
-					<img src="avatar/<%out.print(ava);%>.png" class="userAvatar"
+					<img src=<%=request.getContextPath()+"/avatar/1.png" %> class="userAvatar"
 						style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 10px;"><br>
 					<button type="button" class="btn btn-light" id="changeAvatar"
 						data-toggle="modal" data-target="#avatarModal"
@@ -133,7 +133,7 @@ if(session.getAttribute("sessionID") == null){
 		</div>
         <div style="width: 45%; height: 100%; margin-left:20px;">
             <div style="margin-left: 15px;width:100%; ">
-                <img src="img/about_img_1.png" style="width: 100%"><br><br>
+                <img src=<%=request.getContextPath()+"/img/about_img_1.png"%> style="width: 100%"><br><br>
                 <h2 class="text-center">Send us your thoughts!</h2>
             </div>
                 <div class="container" style=" padding:10px;">
@@ -173,7 +173,6 @@ if(session.getAttribute("sessionID") == null){
        
 	</div>
 
-	</div>
 
 
 
@@ -184,7 +183,7 @@ if(session.getAttribute("sessionID") == null){
             <div class="row">
                 <div class=" col-md-2 col-lg-4">
                     <div class="single_footer_part">
-                        <a href="home.html" class="footer_logo_iner"> <img src="<%=rsx.getString(5) %>" style="height: 75px"alt="#"> </a>
+                        <a href=<%=request.getContextPath()+ "/User/home.jsp"%> class="footer_logo_iner"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" style="height: 75px"alt="#"> </a>
                         <p>Skills Assessment and Course Training Web Application
                         </p>
                     </div>
@@ -205,7 +204,7 @@ if(session.getAttribute("sessionID") == null){
                     <div class="copyright_text">
                         <P>
 Copyright &copy;2019 All rights reserved.</P>
-</P>
+
                     </div>
                 </div>
                 
@@ -239,21 +238,21 @@ Copyright &copy;2019 All rights reserved.</P>
                         <input class="form-check-input" type="radio" name="avatar" value="1"
                             id="ava1"> <label class="form-check-label" for="ava1">
 
-                            <img src="avatar/1.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/1.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
                     <div class="form-check avatar">
                         <input class="form-check-input" type="radio" name="avatar" value="2"
                             id="ava2"> <label class="form-check-label" for="ava2">
 
-                            <img src="avatar/2.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/2.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
                     <div class="form-check avatar">
                         <input class="form-check-input" type="radio" name="avatar" value="3"
                             id="ava3"> <label class="form-check-label" for="ava3">
 
-                            <img src="avatar/3.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/3.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
 
@@ -261,7 +260,7 @@ Copyright &copy;2019 All rights reserved.</P>
                         <input class="form-check-input" type="radio" name="avatar" value="4"
                             id="ava4"> <label class="form-check-label" for="ava4">
 
-                            <img src="avatar/4.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/4.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
 
@@ -269,7 +268,7 @@ Copyright &copy;2019 All rights reserved.</P>
                         <input class="form-check-input" type="radio" name="avatar" value="5"
                             id="ava5"> <label class="form-check-label" for="ava5">
 
-                            <img src="avatar/5.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/5.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
 
@@ -277,7 +276,7 @@ Copyright &copy;2019 All rights reserved.</P>
                         <input class="form-check-input" type="radio" name="avatar" value="6"
                             id="ava6"> <label class="form-check-label" for="ava6">
 
-                            <img src="avatar/6.png" style="width: 100px; height: 100px;">
+                            <img src=<%=request.getContextPath()+"/avatar/6.png" %> style="width: 100px; height: 100px;">
                         </label>
                     </div>
 
@@ -403,38 +402,7 @@ Copyright &copy;2019 All rights reserved.</P>
     if(request.getParameter("message") != null)
     out.write(request.getParameter("message")); 
     %></p>
-    <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- chart js  -->
-    <script src="libraries/Chart.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    
-	
-
-    <script type="text/javascript"
-    src="libraries\alertifyjs/alertify.min.js"></script>
+ <%@ include file="jsScriptUser.jsp" %>
 
 <script>
     alertify.defaults.transition = "slide";

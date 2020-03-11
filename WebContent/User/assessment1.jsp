@@ -5,7 +5,7 @@
 <%@ include file="imports.jsp" %>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 }else {
 %>
 <!doctype html>
@@ -99,7 +99,7 @@ if(session.getAttribute("sessionID") == null){
                     <div class="copyright_text">
                         <P>
 Copyright &copy;2019 All rights reserved.</P>,
-</P>
+
                     </div>
                 </div>
                 
@@ -107,36 +107,8 @@ Copyright &copy;2019 All rights reserved.</P>,
         </div>
     </footer>
     <!--::footer_part end::-->
-    
-    <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- chart js  -->
-    <script src="libraries/Chart.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <script src="libraries\jquery-3.4.1.slim.min.js"></script>
+    <%@ include file="jsScriptUser.jsp" %>
+
     <script>
         
         $(document).ready(function(){

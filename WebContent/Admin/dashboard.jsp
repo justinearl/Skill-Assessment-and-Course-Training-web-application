@@ -2,62 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="imports.jsp" %>
 <%
-	if (session.getAttribute("sessionID") == null) {
-		response.sendRedirect("index.jsp");
-	} else if(session.getAttribute("sessionID") == "admin"){
-		
+	if (session.getAttribute("sessionID") == "admin") {	
 %>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-<!-- Required meta tags-->
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="au theme template">
-<meta name="author" content="Hau Nguyen">
-<meta name="keywords" content="au theme template">
-
-<!-- Title Page-->
-<title>SACT Admin</title>
-
-<!-- Fontfaces CSS-->
-<link href="css/font-face.css" rel="stylesheet" media="all">
-<link href="vendor/font-awesome-4.7/css/font-awesome.min.css"
-	rel="stylesheet" media="all">
-<link href="vendor/font-awesome-5/css/fontawesome-all.min.css"
-	rel="stylesheet" media="all">
-<link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
-	rel="stylesheet" media="all">
-
-<!-- Bootstrap CSS-->
-<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
-	media="all">
-
-<!-- Vendor CSS-->
-<link href="vendor/animsition/animsition.min.css" rel="stylesheet"
-	media="all">
-<link
-	href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
-	rel="stylesheet" media="all">
-<link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-<link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
-	media="all">
-<link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-<link href="vendor/perfect-scrollbar/perfect-scrollbar.css"
-	rel="stylesheet" media="all">
-
-<!-- Data Table CSS -->
-<link
-	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
-	rel="stylesheet">
-<!-- Main CSS-->
-<link href="css/theme.css" rel="stylesheet" media="all">
-
-
-</head>
+<%@ include file="head.jsp" %>
 
 <body>
 	<div class="page-wrapper">
@@ -79,7 +29,7 @@
 							
 							<hr class="line-seprate">
 						</div>
-						<a href="viewInc.jsp">&nbsp;&nbsp;&nbsp;&nbsp;View Instructors</a>
+						<a href=<%=request.getContextPath()+ "/Instructor/viewInc.jsp"%>>&nbsp;&nbsp;&nbsp;&nbsp;View Instructors</a>
 					</div>
 				</div>
 			</section>
@@ -274,7 +224,7 @@
 			</section>
 			<!-- END COPYRIGHT-->
 		</div>
-<a href = "logs.jsp">Generate log Activity</a>
+<a href = <%=request.getContextPath()+ "/Admin/logs.jsp"%>>Generate log Activity</a>
 	</div>
 
 	<!-- MODAL -->
@@ -301,36 +251,7 @@
 
 
 
-	<!-- Jquery JS-->
-	<script src="vendor/jquery-3.2.1.min.js"></script>
-	<!-- Bootstrap JS-->
-	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-	<!-- Vendor JS       -->
-	<script src="vendor/slick/slick.min.js">
-		
-	</script>
-	<script src="vendor/wow/wow.min.js"></script>
-	<script src="vendor/animsition/animsition.min.js"></script>
-	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-		
-	</script>
-	<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-	<script src="vendor/counter-up/jquery.counterup.min.js">
-		
-	</script>
-	<script src="vendor/circle-progress/circle-progress.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-	<script src="vendor/chartjs/Chart.bundle.min.js"></script>
-	<script src="vendor/select2/select2.min.js">
-		
-	</script>
-	<script type="text/javascript" charset="utf8"
-		src="libraries\DataTables\datatables.min.js"></script>
-
-
-	<!-- Main JS-->
-	<script src="js/main.js"></script>
+	<%@ include file="jsScript.jsp" %>
 
 	<script>
 		$(document).ready(function() {
@@ -370,6 +291,6 @@
 
 <%
 	}else{
-		response.sendRedirect("index.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 %>

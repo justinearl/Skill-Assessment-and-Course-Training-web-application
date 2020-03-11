@@ -17,7 +17,7 @@ PreparedStatement logs;
 logs = con.prepareStatement("Select logDate, logActivity from logs");
 ResultSet rs = logs.executeQuery();
 
-FileWriter fstream = new FileWriter("C:\\final\\logs.txt");
+FileWriter fstream = new FileWriter(request.getContextPath()+"/WebContent/logs.txt");
 BufferedWriter outed = new BufferedWriter(fstream);
 while (rs.next()) {            
         outed.write(rs.getString(1)+" - "+rs.getString(2)); 
@@ -25,5 +25,5 @@ while (rs.next()) {
 }
 System.out.println("Completed writing into text file");
 outed.close();
-response.sendRedirect("dashboard.jsp");
+response.sendRedirect(request.getContextPath()+"/Admin/dashboard.jsp");
 %>

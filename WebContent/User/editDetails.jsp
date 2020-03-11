@@ -14,34 +14,39 @@
 <%@ page import="java.util.Random" %>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index.jsp");
 }else {
 %>
 <%
-	String ava = request.getParameter("avatar");
-System.out.println(ava);
+    String nf = request.getParameter("newFname");
+    String nm = request.getParameter("newMname");
+    String nl = request.getParameter("newLname");
+    String nE = request.getParameter("newEmail");
+    String nC = request.getParameter("newDegree");
+    String nS = request.getParameter("newSchool");
 	String user = session.getAttribute("sessionID").toString();
-	System.out.println(user);
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
 		Statement sta = con.createStatement();
-		sta.executeUpdate("UPDATE user SET avatar = "+ ava +" WHERE ID = "+user);
+		sta.executeUpdate("UPDATE user SET firstname = "+ "'"+ nf +"'" +", middlename = "+ "'"+ nm +"'" + ",lastname="+"'"+nl+"'"+",email ="+"'"+nE+"'"+",course = "+"'"+nC+"'"+",school ="+"'"+nS+"'"+" WHERE ID = "+user);
+		
 		
 		//logActivity
 		
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-		String dd = formatter.format(new Date());
-		String act = "User "+user+" changed avatar";
-		
-		PreparedStatement logQue;
-		logQue = con.prepareStatement("Insert into logs (logDate, logActivity, logBy) values(?,?,?)");
-		logQue.setString(1,dd);
-		logQue.setString(2,act);
-		logQue.setString(3,user);
-		logQue.executeUpdate();
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+				String dd = formatter.format(new Date());
+				String act = "User "+nf+" Edit Details";
+				
+				PreparedStatement logQue;
+				logQue = con.prepareStatement("Insert into logs (logDate, logActivity, logBy) values(?,?,?)");
+				logQue.setString(1,dd);
+				logQue.setString(2,act);
+				logQue.setString(3,user);
+				logQue.executeUpdate();
+				
 		sta.close();
 		con.close();
 	} catch (SQLException ex) {
@@ -51,6 +56,6 @@ System.out.println(ava);
 		}
 	}
 	
-	response.sendRedirect("settings1.jsp?message=avatarchangesuccess");
+	response.sendRedirect(request.getContextPath()+"/User/settings1.jsp?profile=saved");
 %>
 <%}%>

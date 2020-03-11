@@ -16,44 +16,9 @@
 <!doctype html>
 <html lang="zxx">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SACT</title>
-    <link rel="icon" href="icons/sact.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- alertify -->
-    <link
-    href="libraries\alertifyjs/css/alertify.min.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-  <link
-    href="libraries\alertifyjs/css/themes/bootstrap.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/all.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<%@ include file="head.jsp" %>
 
 <body>
-<%if(session.getAttribute("sessionID") == null) {%>
 <%
 PreparedStatement psx;
 ResultSet rsx;
@@ -84,8 +49,8 @@ while (rse.next()) {
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="<%=rsx.getString(5) %>" style="height:60px;margin-bottom:10px" alt="logo"> </a>
-                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="<%=rsx.getString(5) %>" alt="logo"> </a>
+                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" style="height:60px;margin-bottom:10px" alt="logo"> </a>
+                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +85,7 @@ while (rse.next()) {
                             <h1>Assess your skills.
                                 Train yourself.</h1>
                             <p>Elevate your skills by using this Skill Assessment and Course Training Web Application.</p>
-                            <a href="assessment.jsp" class="btn_2" data-toggle="modal"
+                            <a href="#" class="btn_2" data-toggle="modal"
                             data-target="#signupModal">SIGN UP NOW</a>
                         </div>
                     </div>
@@ -505,6 +470,3 @@ Copyright &copy;2019 All rights reserved.</p>
 </body>
 
 </html>
-<%}else if(session.getAttribute("sessionID") == "admin"){
-	response.sendRedirect("dashboard.jsp");
-	}%>

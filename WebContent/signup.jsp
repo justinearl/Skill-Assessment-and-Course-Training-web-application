@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ include file="imports.jsp" %>
+<%@ include file="User/imports.jsp" %>
 <%
 	String pagee = "";
 	String first = request.getParameter("firstName");
@@ -44,9 +44,9 @@
 				ex = ex.getNextException();
 			}
 		}
-		pagee = "index.jsp?message=success";
+		pagee = request.getContextPath()+"/index.jsp?message=success";
 	}else{
-		pagee = "index.jsp?message=useralreadyexist";
+		pagee = request.getContextPath()+"/index.jsp?message=useralreadyexist";
 	}
 	
 	

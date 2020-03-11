@@ -10,7 +10,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
+<%@ page import="java.io.File"%>
 <%@ page import="java.sql.SQLException"%>
+
     <%@ page session="true" %>
     <%        
     response.setHeader("Pragma", "No-cache");
@@ -19,12 +21,32 @@
 %>
 <%
 if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
-}else {
+	response.sendRedirect(request.getContextPath()+"index.jsp");
+}else if(session.getAttribute("sessionID") == "admin"){
 %>
 <% 
-String subj = request.getParameter("subject");
-String mess = request.getParameter("message");
+String subj = request.getParameter("courseTitle");
+String mess = request.getParameter("courseCode");
+String cat = request.getParameter("courseCat");
+String sCat = "blank";
+String logo = "gear";
+
+	if(cat != null){
+	if(cat.matches("math")){
+		sCat = "Mathematics";
+		logo = "math";
+	}else if(cat.matches("hardware")){
+		sCat = "Hardware";
+		logo = "gear";
+	}else if(cat.matches("software")){
+		sCat = "Software";
+		logo = "prog";
+	}else if(cat.matches("engsci")){
+		sCat = "Engineering";
+		logo = "ensi";
+	}else{
+		
+	}}
 
 	String user = session.getAttribute("sessionID").toString();
 	System.out.println(user);
@@ -32,9 +54,17 @@ String mess = request.getParameter("message");
 	try {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-		Statement sta = con.createStatement();
-		sta.executeUpdate("INSERT INTO feedback (subject, message, uid)  VALUES ('" + subj
-				+ "','" + mess + "','" + user  + "')");
+		PreparedStatement as;
+		as = con.prepareStatement("Insert into assessmentList (assessmentName, assessCode, category,  image, link) values(?,?,?,?,?)");
+		as.setString(1,subj);
+		as.setString(2,mess);
+		as.setString(3,sCat);
+
+		as.setString(4,logo);
+		as.setString(5,"Test1.jsp");
+		
+		as.executeUpdate();
+
 
 		
 		//logActivity
@@ -42,17 +72,15 @@ String mess = request.getParameter("message");
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 		String ff = formatter.format(new Date());
-		String act = "User "+user+" sent feedback ";
+		String act = "Admin added assessment " + subj;
 		
 		PreparedStatement logQue;
-		logQue = con.prepareStatement("Insert into logs (logDate, logActivity, logBy) values(?,?,?)");
+		logQue = con.prepareStatement("Insert into logs (logDate, logActivity) values(?,?)");
 		logQue.setString(1,ff);
 		logQue.setString(2,act);
-		logQue.setString(3,user);
+
 		logQue.executeUpdate();
-		
-		sta.close();
-		con.close();
+
 	} catch (SQLException ex) {
 		while (ex != null) {
 			System.out.println("SQL Exception: " + ex.getMessage());
@@ -60,6 +88,8 @@ String mess = request.getParameter("message");
 		}
 	}
 	
-	response.sendRedirect("settings1.jsp?message=sent");
+	response.sendRedirect(request.getContextPath()+"/Admin/cmsAdmin.jsp?message=sent");
 %>
-<%}%>
+<%}else{
+	response.sendRedirect(request.getContextPath()+"Login.jsp");
+}%>

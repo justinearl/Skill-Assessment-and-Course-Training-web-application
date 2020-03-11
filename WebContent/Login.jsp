@@ -41,7 +41,7 @@
 			logQue.setString(2,act);
 			logQue.executeUpdate();
 			request.setAttribute("urlM", "dashboard.jsp");
-			response.sendRedirect("dashboard.jsp");
+			response.sendRedirect(request.getContextPath()+"/Admin/dashboard.jsp");
 		} else {
 
 
@@ -59,7 +59,7 @@
 				if (!rs.next()) {
 					session.setAttribute("sessionID", null);
 					request.setAttribute("errorlogin", "Invalid Login");
-					response.sendRedirect("index.jsp?message=logininvalid");
+					response.sendRedirect(request.getContextPath()+"/index.jsp?message=logininvalid");
 				} else {
 
 					String userCon = rs.getString(18);
@@ -67,10 +67,10 @@
 					if("inc".equals(userRole)){
 						if(userCon.matches("true")){
 							session.setAttribute("sessionID", rs.getString(1));
-							request.setAttribute("urlM", "instructor.jsp");
-							response.sendRedirect("instructor.jsp");
+							request.setAttribute("urlM", request.getContextPath()+"/Instructor/instructor.jsp");
+							response.sendRedirect(request.getContextPath()+"/Instructor/instructor.jsp");
 						}else{
-							response.sendRedirect("isuccess.jsp");
+							response.sendRedirect(request.getContextPath()+"/Instructor/isuccess.jsp");
 						}
 						
 					}else{
@@ -101,7 +101,7 @@
 						logQue.setString(2,act);
 						logQue.setString(3,rs.getString(1));
 						logQue.executeUpdate();
-						response.sendRedirect("profile1.jsp?message=loginsuccess");
+						response.sendRedirect(request.getContextPath()+"/User/profile1.jsp?message=loginsuccess");
 					}
 					
 				}
@@ -112,7 +112,7 @@
 		}
 
 	} else {
-		response.sendRedirect("home.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 %>
 
