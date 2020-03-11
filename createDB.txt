@@ -1,0 +1,117 @@
+CREATE TABLE `sactapp`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NULL,
+ `password` VARCHAR(45) NULL,
+  `firstname` VARCHAR(45) NULL,
+  `middlename` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  `course` VARCHAR(45) NULL,
+  `degree` VARCHAR(45) NULL,
+  `school` LONGTEXT NULL,
+  `vkey` LONGTEXT NULL,
+  `dateReg` VARCHAR(45) NULL,
+  `points` INT ZEROFILL NULL,
+  `assessdone` INT ZEROFILL NULL,
+  `traindone` INT ZEROFILL NULL,
+  `avatar` LONGTEXT NULL,
+  `bio` LONGTEXT NULL,
+  `userRole` TINYTEXT NULL,
+  `confirmation` TINYTEXT NULL,
+  `archive` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+CREATE TABLE `sactapp`.`assessmentcompleted` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `assesscode` VARCHAR(45) NULL,
+  `uid` VARCHAR(45) NULL,
+  `score` INT ZEROFILL NULL,
+  `trial` INT ZEROFILL NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+CREATE TABLE `sactapp`.`assessmentlist` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `assessmentname` VARCHAR(45) NULL,
+  `assessscode` VARCHAR(45) NULL,
+  `category` VARCHAR(45) NULL,
+  `desc` LONGTEXT NULL,
+  `link` VARCHAR(45) NULL,
+  `setno` INT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `sactapp`.`classlist` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `classname` VARCHAR(45) NULL,
+  `classdesc` LONGTEXT NULL,
+  `date` VARCHAR(45) NULL,
+  `author` VARCHAR(45) NULL,
+  `classcon` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+CREATE TABLE `sactapp`.`feedback` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `subject` VARCHAR(45) NULL,
+  `message` LONGTEXT NULL,
+  `uid` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+
+CREATE TABLE `sactapp`.`logs` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `logdate` VARCHAR(45) NULL,
+  `logactivity` LONGTEXT NULL,
+  `logby` VARCHAR(45) NULL,
+  `logtype` LONGTEXT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+
+CREATE TABLE `sactapp`.`trainingenrolled` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `trainingcode` VARCHAR(45) NULL,
+  `uid` VARCHAR(45) NULL,
+  `progress` INT ZEROFILL NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+CREATE TABLE `sactapp`.`traininglist` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `trainingname` VARCHAR(45) NULL,
+  `trainingcode` VARCHAR(45) NULL,
+  `category` VARCHAR(45) NULL,
+  `desc` LONGTEXT NULL,
+  `link` VARCHAR(45) NULL,
+  `image` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+CREATE TABLE `sactapp`.`usercourse` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `coursetitle` VARCHAR(45) NULL,
+  `category` VARCHAR(45) NULL,
+  `progress` INT NULL,
+  `user_id` INT NULL,
+  `coursecode` INT NULL,
+  `img` VARCHAR(45) NULL,
+  `desc` LONGTEXT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+CREATE TABLE `sactapp`.`webcontent` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `webpart` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `type` VARCHAR(45) NULL,
+  `link` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
