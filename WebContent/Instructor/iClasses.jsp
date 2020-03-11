@@ -1,10 +1,17 @@
 
+ <%@ include file="imports.jsp" %>
+<%
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+%>
 
 <!doctype html>
 <html lang="zxx">
     <%@ include file="head.jsp" %>
 <body>
-    <%@ include file="iHeader.jsp" %>
+
+    <%@ include file="header.jsp" %>
+
 
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
@@ -57,41 +64,43 @@
                         </select>
                     </div>
                 </div>
-        
-        <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 25px; padding-left: 30px;">
-                        <div class="card assess" style="width: 300px!important;">
-                                <img src=<%=request.getContextPath() +"/images/home.jpg" %> class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h4 class="card-title">Circuits</h4>
-                                  <h5 class="card-text">5th Year</h5>
-                                  <h5 class="card-cat">Section: 1</h5>
-                                  <a href="class.html" class="btn btn-light proceed">Proceed</a>
-                                </div>
-                              </div>
-                        
-                              <div class="card assess" style="width: 300px!important;">
-                                    <img src=<%=request.getContextPath() +"/images/home.jpg" %> class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                      <h4 class="card-title">Programming</h4>
-                                      <h5 class="card-text">2nd Year</h5>
-                                      <h5 class="card-cat">Section: 3</h5>
-                                      <a href="class.html" class="btn btn-light proceed">Proceed</a>
-                                    </div>
-                                  </div>
-                                  <div class="card assess" style="width: 300px!important;">
-                                       <img src=<%=request.getContextPath() +"/images/home.jpg" %> class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                          <h4 class="card-title">Engineering Sciences</h4>
-                                          <h5 class="card-text">1st Year</h5>
-                                          <h5 class="card-cat">Section: 4</h5>
-                                          <a href="class.html" class="btn btn-light proceed">Proceed</a>
-                                        </div>
-                                      </div>
-                
-                  
-                    
-                    </div>
-                    </div>
+
+					<div class="container"
+						style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 25px; padding-left: 30px;">
+
+						<%
+        String user = session.getAttribute("sessionID").toString();
+        PreparedStatement getClassList;
+    	ResultSet classInfo;
+    	getClassList = con.prepareStatement("SELECT * from classlist where classcon = ?");
+    	getClassList.setString(1, user);
+    	classInfo = getClassList.executeQuery();
+    	while(classInfo.next()){
+        %>
+						<div class="card assess" style="width: 300px !important;">
+
+							<img src=<%=classInfo.getString("cardimg") %>
+								class="card-img-top" alt="...">
+
+							<div class="card-body">
+								<h4 class="card-title" value>
+									<%out.print(classInfo.getString("classsubject")); %>
+								</h4>
+								<h5 class="card-text">
+									<%out.print(classInfo.getString("classyear")); %>
+								</h5>
+								<h5 class="card-cat">
+									<%out.print(classInfo.getString("classsection")); %>
+								</h5>
+								<a href="#" class="btn btn-light proceed">Proceed</a>
+							</div>
+						</div>
+
+						<%} %>
+
+
+					</div>
+				</div>
 
     
      <!--::footer_part start::-->
@@ -218,12 +227,16 @@ Copyright &copy;2019 All rights reserved.</P>,
          } else if (key.length <= 8 || key.length >= 64){
              alertify.error('Invalid enrolment key!');
          } else {
+        	 console.log("test");
          	$.post(
                  'addClass.jsp',
                  	{
-                 		cName: name,
-                 		cDesc: desc,
-                 		key: enKey
+                 		className : name,
+                 		classDescription: desc,
+                 		enrollmentKey: key,
+                 		classSubject: subject,
+                 		classYear: year,
+                 		classSection: section
                  	}
              ); 
          	$('#closeModal').click();

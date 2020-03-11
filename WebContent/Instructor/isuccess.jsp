@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- animate CSS -->
     <link rel="stylesheet" href="../css/animate.css">
@@ -33,14 +33,4 @@
     </div>
     <!-- breadcrumb start-->
 </body>
-</html>bkit
-=======
-<meta charset="ISO-8859-1">
-<title>Registered</title>
-</head>
-<body>
-<p>APPLICATION COMPLETED Please wait for your registration to be confirmed</p>
-<a href="index.jsp">Go to Homepage</a>
-</body>
 </html>
->>>>>>> 9c62c760fd22462c5b0595b235f99311f495a769

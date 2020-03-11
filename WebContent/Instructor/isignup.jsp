@@ -3,35 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<<<<<<< HEAD
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SACT</title>
-    <link rel="icon" href="../css/icons/favicon.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <!-- jQuery UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="../css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="../css/all.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="../css/slick.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" type="text/css" href="../SACTStyle.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- alertify -->
-    <link href="../libraries\alertifyjs/css/alertify.min.css" rel="stylesheet" type="text/css" />
-    <!-- datatables -->
-    <link rel="stylesheet" type="text/css" href="../libraries\DataTables\DataTables-1.10.18\css\jquery.dataTables.css">
+
+<%@ include file="head.jsp" %>
+
     
 <title>Sign up</title>
 </head>
@@ -103,25 +77,7 @@ Copyright &copy;2019 All rights reserved.</P>,
             </div>
         </div>
     </footer>
-    <!-- jquery plugins here-->
-<script src=<%=request.getContextPath() + "/js/jquery-1.12.1.min.js"%>></script>
-<!-- chart js  -->
-<script src=<%=request.getContextPath() + "/libraries/Chart.min.js"%>></script>
-<!-- popper js -->
-<script src=<%=request.getContextPath() + "/js/popper.min.js"%>></script>
-<!-- bootstrap js -->
-<script src=<%=request.getContextPath() + "/js/bootstrap.min.js"%>></script>
-<!-- easing js -->
-<script
-	src=<%=request.getContextPath() + "/js/jquery.magnific-popup.js"%>></script>
-<!-- swiper js -->
-<script src=<%=request.getContextPath() + "/js/swiper.min.js"%>></script>
-<!-- swiper js -->
-<script src=<%=request.getContextPath() + "/js/masonry.pkgd.js"%>></script>
-<!-- particles js -->
-<script src=<%=request.getContextPath() + "/js/owl.carousel.min.js"%>></script>
-<script
-	src=<%=request.getContextPath() + "/js/jquery.nice-select.min.js"%>></script>
+   <%@ include file="jsScriptUser.jsp" %>
 <!-- slick js -->
 <script src=<%=request.getContextPath() + "/js/slick.min.js"%>></script>
 <script src=<%=request.getContextPath() + "/js/jquery.counterup.min.js"%>></script>
@@ -184,23 +140,6 @@ Copyright &copy;2019 All rights reserved.</P>,
    }
    }
     </script>
-=======
-<title>Sign up</title>
-</head>
-<body>
-<form method="POST" action="iattempt.jsp" autocomplete="off">
- <h1>SIGNUP</h1>
-<input type="text" placeholder="Email" id="iemail" name="iemail"><br>
-<input type="text" placeholder="First Name" id="ifname" name="ifname"><br>
-<input type="text" placeholder="Middle Name" id="imname" name="imname"><br>
-<input type="text" placeholder="Last Name" id="ilname" name="ilname"><br>
-<input type="text" placeholder="Contact No." id="ino" name="ino"><br>
-<input type="text" placeholder="Password" id="ipass" name="ipass"><br>
-<input type="text" placeholder="Confirm Password" id="icon" name="icon"><br>
-<input type="text" placeholder="Educational Background" id="iback" name="iback">
-<input type="submit" id="buttonSubmit" name="buttonSubmit" value="Register">
 
-</form>
->>>>>>> 9c62c760fd22462c5b0595b235f99311f495a769
 </body>
 </html>

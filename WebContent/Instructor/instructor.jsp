@@ -5,11 +5,11 @@
 <!doctype html>
 <html lang="zxx">
 
-<%@ include file="/User/head.jsp" %>
+<%@ include file="head.jsp" %>
 
 <body>
 
-    <%@ include file="/User/header.jsp" %>
+    <%@ include file="header.jsp" %>
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">

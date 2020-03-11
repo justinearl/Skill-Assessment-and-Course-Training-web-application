@@ -115,3 +115,14 @@ CREATE TABLE `sactapp`.`webcontent` (
   `link` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+
+ALTER TABLE `sactapp`.`classlist` 
+ADD COLUMN `classYear` VARCHAR(45) NULL AFTER `classcon`,
+ADD COLUMN `classSection` VARCHAR(45) NULL AFTER `classYear`,
+ADD COLUMN `key` VARCHAR(45) NULL AFTER `classSection`,
+ADD COLUMN `cardimg` VARCHAR(45) NULL AFTER `key`,
+ADD COLUMN `enkey` VARCHAR(45) NULL AFTER `cardimg`;
+
+
+ALTER TABLE `sactapp`.`classlist` 
+ADD COLUMN `classsubject` VARCHAR(45) NULL AFTER `enkey`;
