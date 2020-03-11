@@ -278,7 +278,11 @@ Copyright &copy;2019 All rights reserved.</p>
          <div class="modal-content" style="background-color: rgb(241,250,248)">
              <div class="modal-header">
                  <h5 class="modal-title" id="exampleModalLongTitle">SIGN UP</h5>
+<<<<<<< HEAD
                  <a href="Instructor/isignup.jsp" style="margin-top: 2px;">&nbsp;(Sign up as instructor? Click here.)</a>
+=======
+                 <a href="isignup.jsp" style="margin-top: 2px;">&nbsp;(Sign up as instructor? Click here.)</a>
+>>>>>>> 9c62c760fd22462c5b0595b235f99311f495a769
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
