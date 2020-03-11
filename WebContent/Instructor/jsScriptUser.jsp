@@ -32,6 +32,7 @@
 	src=<%=request.getContextPath() + "/libraries/jquery-3.4.1.slim.min.js"%>></script>
 <script type="text/javascript"
 	src=<%=request.getContextPath() + "/libraries/alertifyjs/alertify.min.js"%>></script>
-	<script type="text/javascript" 
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>
+    
+    <script src=<%=request.getContextPath() + "/js/jquery.dynamicTable-1.0.0.js" %>></script>
+    

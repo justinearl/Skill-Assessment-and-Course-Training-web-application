@@ -163,12 +163,12 @@ Copyright &copy;2019 All rights reserved.</P>,
                         </div>
                     </div>
                   </div>
-                   <input type="submit" value="Submit" id="classSubmit" hidden>
+                   <input type="submit" value="Submit" id="classSubmit" href="createAssessment.jsp" hidden>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="closeModal" data-dismiss="modal">Close</button>
-              <button  class="btn btn-primary"  id="saveClass" href="newAssessment.html">Proceed</button>
+              <button  class="btn btn-primary"  id="saveClass">Proceed</button>
             </div>
             
           </div>
@@ -208,10 +208,11 @@ Copyright &copy;2019 All rights reserved.</P>,
                 alertify.error('Please enter an enrolment key.');
             } else if (key.length <= 8 || key.length >= 64){
                 alertify.error('Invalid enrolment key!');
+            } else {
+            	$('#classSubmit').click();
             }
          } else {
-         	console.log("SAVE ASSESSMENT DETAILS");
-         	//$('#closeModal').click();
+         	$('#classSubmit').click();
          }
         }
       
