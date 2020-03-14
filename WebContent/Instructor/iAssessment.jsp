@@ -209,10 +209,12 @@ Copyright &copy;2019 All rights reserved.</P>,
             } else if (key.length <= 8 || key.length >= 64){
                 alertify.error('Invalid enrolment key!');
             } else {
-            	$('#classSubmit').click();
+            	//$('#classSubmit').click();
+            	window.location.href = "createAssessment.jsp";
             }
          } else {
-         	$('#classSubmit').click();
+        	//$('#classSubmit').click();
+         	window.location.href = "createAssessment.jsp";
          }
         }
       
