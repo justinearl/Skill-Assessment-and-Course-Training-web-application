@@ -35,4 +35,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>
     
     <script src=<%=request.getContextPath() + "/js/jquery.dynamicTable-1.0.0.js" %>></script>
+    <script type="text/javascript" src=<%=request.getContextPath() + "/js/external/mootools-core-1.4.5-minified.js"%>></script>
+
+<script type="text/javascript" src=<%=request.getContextPath() + "/js/dg-quiz-maker.js"%>></script>
     

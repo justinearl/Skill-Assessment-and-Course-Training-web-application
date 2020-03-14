@@ -42,6 +42,7 @@
                 
                 <div class="col-md-12 col-lg-12">
                 <button type="button" class="btn btn-info" id="create" data-toggle="modal" data-target="#exampleModalCenter">Publish Assessment</button>
+   
                   
                 </div>
                     
@@ -101,6 +102,12 @@ Copyright &copy;2019 All rights reserved.</P>,
            
         });
         
+        function showData(){
+        	var data = $("#part1Multi").getTableData();
+        	var data2 = $("#part1Identi").getTableData();
+        	
+        	$("#data").text(data + "<br>" + data2);
+        }
         function publish(){
         	var part1 = $("input[name='part1Type']:checked").val();
     		if (part1 == "mc"){
