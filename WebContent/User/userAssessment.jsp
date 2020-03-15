@@ -42,7 +42,7 @@ img{
          
                     <div style="padding-top: 0px;height:100px;"class="breadcrumb_iner text-center">
                         <div style="padding-top: 0px;" class="breadcrumb_iner_item">
-                            <h2 style="font-size:30px;	margin-top:0px;">Assessment Preview</h2>
+                            <h2 style="font-size:30px;	margin-top:0px;">Assessment Title here</h2>
                         </div>
                     </div>
               
@@ -56,7 +56,7 @@ img{
 				<div id="error"></div>
 				<div id="result"></div>
 				<br><br>
-				<a href="instructor.jsp" id="home"></a>
+				<a href="profile1.jsp" id="home"></a>
 				</center>
 	</div>
 <%@ include file="jsScriptUser.jsp" %>
@@ -82,7 +82,7 @@ function showScore() {
 	el = new Element('h4');
 	el.set('html', 'Score: ' + score.numCorrectAnswers + ' of ' + score.numQuestions);
 	el1 = new Element('a');
-	el1.set('html', 'Go back to home');
+	el1.set('html', 'Go back to my profile');
     document.id('result').adopt(el);
     document.id('home').adopt(el1);
 

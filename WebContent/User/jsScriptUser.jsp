@@ -32,3 +32,6 @@
 	src=<%=request.getContextPath() + "/libraries/jquery-3.4.1.slim.min.js"%>></script>
 <script type="text/javascript"
 	src=<%=request.getContextPath() + "/libraries/alertifyjs/alertify.min.js"%>></script>
+	<script type="text/javascript" src=<%=request.getContextPath() + "/js/external/mootools-core-1.4.5-minified.js"%>></script>
+
+<script type="text/javascript" src=<%=request.getContextPath() + "/js/dg-quiz-maker.js"%>></script>
