@@ -64,7 +64,7 @@
                                   <h4 class="card-title">Resistance</h4>
                                   <h5 class="card-text">Subject: Circuits</h5>
                                       <h5 class="card-cat">Type: Activity</h5>
-                                  <a href="#" class="btn btn-light proceed">View Assessment</a>
+                                  <button id="1" class="btn btn-light proceed">View Assessment</button>
                                 </div>
                               </div>
                         
@@ -74,7 +74,7 @@
                                   <h4 class="card-title">Circuits Analysis</h4>
                                   <h5 class="card-text">Subject: Circuits</h5>
                                       <h5 class="card-cat">Type: Exam</h5>
-                                  <a href="#" class="btn btn-light proceed">View Assessment</a>
+                                  <button id="2" class="btn btn-light proceed">View Assessment</button>
                                 </div>
 
                               </div> <div class="card assess" style="width: 300px!important;">
@@ -83,7 +83,7 @@
                                   <h4 class="card-title">Passive or Active?</h4>
                                   <h5 class="card-text">Subject: Circuits</h5>
                                       <h5 class="card-cat">Type: Activity</h5>
-                                  <a href="#" class="btn btn-light proceed">View Assessment</a>
+                                  <button id="3" class="btn btn-light proceed">View Assessment</button>
                                 </div>
                               </div>
                 
@@ -178,6 +178,14 @@ Copyright &copy;2019 All rights reserved.</P>,
     
     <script>
     
+    var but = null;
+    var x = document.getElementsByClassName("btn btn-light proceed");
+    $(x).click(function() {
+        but = this.id;
+        console.log(but);
+    });
+    
+    
     alertify.defaults.transition = "slide";
      alertify.defaults.theme.ok = "btn btn-success";
         $(document).ready(function(){
@@ -191,6 +199,7 @@ Copyright &copy;2019 All rights reserved.</P>,
            
         });
 
+       
         function checkClass(){
             var name = $("#atitle").val();
          	var desc = $("#assessType").val();

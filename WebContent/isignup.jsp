@@ -21,7 +21,7 @@
 	<div
 		style="background-color: rgb(241, 250, 248); width: 100%; height: 100%; border-radius: 10px; padding: 30px; padding-left: 0px;">
 		<div style="padding: 50px;">
-			<form method="POST" action="iattempt.jsp" autocomplete="off">
+			<form method="POST" action="/Final/SignUpInc" autocomplete="off">
 				<div class="form-row">
 					<div class="col">
 						<input type="text" class="form-control" placeholder="First name"
@@ -91,25 +91,8 @@
 			</div>
 		</div>
 	</footer>
-	<%@ include file="jsScriptUser.jsp"%>
-	<!-- slick js -->
-	<script src=<%=request.getContextPath() + "/js/slick.min.js"%>></script>
-	<script
-		src=<%=request.getContextPath() + "/js/jquery.counterup.min.js"%>></script>
-	<script src=<%=request.getContextPath() + "/js/waypoints.min.js"%>></script>
-	<script src=<%=request.getContextPath() + "/js/contact.js"%>></script>
-	<script
-		src=<%=request.getContextPath() + "/js/jquery.ajaxchimp.min.js"%>></script>
-	<script src=<%=request.getContextPath() + "/js/jquery.form.js"%>></script>
-	<script
-		src=<%=request.getContextPath() + "/js/jquery.validate.min.js"%>></script>
-	<script src=<%=request.getContextPath() + "/js/mail-script.js"%>></script>
-	<!-- custom js -->
-	<script src=<%=request.getContextPath() + "/js/custom.js"%>></script>
-	<script
-		src=<%=request.getContextPath() + "/libraries/jquery-3.4.1.slim.min.js"%>></script>
-	<script type="text/javascript"
-		src=<%=request.getContextPath() + "/libraries/alertifyjs/alertify.min.js"%>></script>
+	<%@ include file="/Instructor/jsScriptUser.jsp"%>
+	
 
 
 

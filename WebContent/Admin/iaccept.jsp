@@ -14,9 +14,9 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%
-if(session.getAttribute("sessionID") == null){
-	response.sendRedirect("index.jsp");
-}else {
+if(session.getAttribute("sessionID") == "admin"){
+
+
 %>
 
 <%
@@ -60,4 +60,7 @@ if(session.getAttribute("sessionID") == null){
 	
 	response.sendRedirect("viewInc.jsp?message=status");
 %>
-<%}%>
+<%}else{
+	response.sendRedirect(request.getContextPath() + "/index.jsp");
+}
+%>

@@ -245,7 +245,7 @@ Copyright &copy;2019 All rights reserved.</p>
                  </button>
              </div>
              <div class="modal-body">
-                 <form method="POST" action="Login.jsp" autocomplete="off" >
+                 <form method="POST" action="/Final/Login" autocomplete="off" >
                      <div class="form-group">
                          <input type="email" class="form-control" id="loginEmail" name = "loginEmail"
                              placeholder="Email Address">
@@ -279,13 +279,13 @@ Copyright &copy;2019 All rights reserved.</p>
              <div class="modal-header">
                  <h5 class="modal-title" id="exampleModalLongTitle">SIGN UP</h5>
 
-                 <a href="Instructor/isignup.jsp" style="margin-top: 2px;">&nbsp;(Sign up as instructor? Click here.)</a>
+                 <a href="isignup.jsp" style="margin-top: 2px;">&nbsp;(Sign up as instructor? Click here.)</a>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
              <div class="modal-body">
-                 <form method="POST" action="signup.jsp" autocomplete="off">
+                 <form method="POST" action="/Final/Signup" autocomplete="off">
                          <div class="row">
                                  <div class="col">
                                    <input type="text" class="form-control" placeholder="First name" id="signupFname" name="firstName">

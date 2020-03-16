@@ -6,16 +6,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>Login</display-name>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>home.Login</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>Signup</display-name>
     <servlet-name>Signup</servlet-name>
     <servlet-class>home.Signup</servlet-class>
@@ -54,7 +44,7 @@
     <servlet-name>FileUploadHandler</servlet-name>
     <url-pattern>/FileUploadHandler</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>imgUpload</display-name>
     <servlet-name>imgUpload</servlet-name>
@@ -73,5 +63,45 @@
   <servlet-mapping>
     <servlet-name>sasa</servlet-name>
     <url-pattern>/sasa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>home.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClassView</display-name>
+    <servlet-name>ClassView</servlet-name>
+    <servlet-class>instructor.ClassView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassView</servlet-name>
+    <url-pattern>/Instructor/ClassView</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddClass</display-name>
+    <servlet-name>AddClass</servlet-name>
+    <servlet-class>instructor.AddClass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddClass</servlet-name>
+    <url-pattern>/Instructor/AddClass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignUpInc</display-name>
+    <servlet-name>SignUpInc</servlet-name>
+    <servlet-class>home.SignUpInc</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpInc</servlet-name>
+    <url-pattern>/SignUpInc</url-pattern>
   </servlet-mapping>
 </web-app>

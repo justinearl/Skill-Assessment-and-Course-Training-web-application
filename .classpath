@@ -13,12 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/lib/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/lib/commons-logging-1.1.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/lib/hsqldb.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/lib/jackcess-2.1.11.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/lib/ucanaccess-4.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/commons-codec-1.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/JAR/javax.mail-api-1.6.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

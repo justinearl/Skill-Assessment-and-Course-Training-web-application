@@ -82,7 +82,7 @@ Copyright &copy;2019 All rights reserved.</P>,
          <p>Are you sure you want to publish this assessment?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back.</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exitButton">No, go back.</button>
         <button type="button" class="btn btn-primary" id="publish">Yes, proceed.</button>
       </div>
     </div>
@@ -92,7 +92,8 @@ Copyright &copy;2019 All rights reserved.</P>,
       <%@ include file="jsScriptUser.jsp" %>
     
     <script>
-    
+    var mytable1 = document.getElementById("part1Multi");
+    var mytable2 = document.getElementById("part1Identi");
     alertify.defaults.transition = "slide";
      alertify.defaults.theme.ok = "btn btn-success";
         $(document).ready(function(){
@@ -101,6 +102,7 @@ Copyright &copy;2019 All rights reserved.</P>,
         	$("#publish").click(publish);
            
         });
+
         
         function showData(){
         	var data = $("#part1Multi").getTableData();
@@ -108,13 +110,39 @@ Copyright &copy;2019 All rights reserved.</P>,
         	
         	$("#data").text(data + "<br>" + data2);
         }
+
         function publish(){
-        	var part1 = $("input[name='part1Type']:checked").val();
-    		if (part1 == "mc"){
-    			var data = $("#part1Multi").getTableData();
-    		} else var data=$("#part1Identi").getTableData();
+//         	var part1 = $("input[name='part1Type']:checked").val();
+//     		if (part1 == "mc"){
+//     			var data = $("#part1Multi").getTableData();
+//     		} else var data=$("#part1Identi").getTableData();
+		
+		var rLength = mytable1.rows.length;
+
+		for(var i=0 ; i < rLength-2 ; i++){
+			var data = mytable1.rows.item(i+2).cells;
+		
+			var q = data.item(1).getElementsByTagName("span")[0].innerText;
+			var a = data.item(2).getElementsByTagName("span")[0].innerText;
+			var b = data.item(3).getElementsByTagName("span")[0].innerText;
+			var c = data.item(4).getElementsByTagName("span")[0].innerText;
+			var d = data.item(5).getElementsByTagName("span")[0].innerText;
+			var ans = data.item(6).getElementsByTagName("span")[0].innerText;
+		}
+		
     		
-    		console.log(data);
+     		$.post('addQuestion.jsp',
+     				{
+     					question: q,
+     					a: a,
+     					b: b,
+     					c: c,
+     					d: d,
+     					ans: ans
+     				}
+    				);
+    		
+     		$('#exitButton').click();
         }
         
         function part1MC(){

@@ -63,4 +63,6 @@
 	as.close();
 	userName.close();
 	con.close();
+	request.setAttribute("ddata", "data");
+
  %>

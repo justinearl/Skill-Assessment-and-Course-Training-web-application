@@ -29,7 +29,7 @@
 							
 							<hr class="line-seprate">
 						</div>
-						<a href=<%=request.getContextPath()+ "/Instructor/viewInc.jsp"%>>&nbsp;&nbsp;&nbsp;&nbsp;View Instructors</a>
+						<a href=<%=request.getContextPath()+ "/Admin/viewInc.jsp"%>>&nbsp;&nbsp;&nbsp;&nbsp;View Instructors</a>
 					</div>
 				</div>
 			</section>
@@ -48,7 +48,9 @@
 								PreparedStatement ps1;
 								Class.forName("com.mysql.jdbc.Driver").newInstance();
 								Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-									ps1 = con.prepareStatement("Select COUNT(ID) from User");
+									ps1 = con.prepareStatement("Select COUNT(ID) from User where userRole = 'student'  ");
+								
+					
 									ResultSet rs1 = ps1.executeQuery();
 									while (rs1.next()) {
 										out.print(rs1.getString(1));
@@ -146,7 +148,8 @@
 											<%
 												PreparedStatement ps;
 													
-													ps = con.prepareStatement("Select * from User");
+													ps = con.prepareStatement("Select * from User  where userRole !=?");
+													ps.setString(1, "inc");
 													ResultSet rs = ps.executeQuery();
 													while (rs.next()) {
 											%>

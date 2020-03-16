@@ -31,12 +31,16 @@
 		}
 	
 		try {
-			
-			Statement sta = con.createStatement();
-			sta.executeUpdate("INSERT INTO user (email, password, firstname, lastname, vkey, dateReg, avatar)  VALUES ('" + email
-					+ "','" + password + "','" + first + "','" + last + "','" + vkey + "','" + dateT + "','" + a +"')");
-	
-			sta.close();
+			ps1 = con.prepareStatement("INSERT INTO user (email, password, firstname, lastname, vkey, dateReg, avatar,userRole)  VALUES(?,?,?,?,?,?,?,?)");
+			ps1.setString(1,email);
+			ps1.setString(2,password);
+			ps1.setString(3,first);
+			ps1.setString(4,last);
+			ps1.setString(5,vkey);
+			ps1.setString(6,dateT);
+			ps1.setString(7,"7");
+			ps1.setString(8,"student");
+			ps1.executeUpdate();
 			con.close();
 		} catch (SQLException ex) {
 			while (ex != null) {
