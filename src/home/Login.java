@@ -59,7 +59,7 @@ public class Login extends HttpServlet {
 			ResultSet rs = ps.executeQuery();
 
 			if (!rs.next()) {
-				session.setAttribute("sessionID", null);
+				session.setAttribute("sessionID", "empty");
 				request.setAttribute("errorlogin", "Invalid Login");
 				response.sendRedirect("index.jsp");
 			} else {
@@ -67,12 +67,13 @@ public class Login extends HttpServlet {
 				System.out.print(rs.getString(4));
 				session.setAttribute("sessionID", rs.getString("id"));
 				session.setAttribute("userRole", rs.getString("userRole"));
+				session.setAttribute("existingUser", rs.getString("firstname")+" "+rs.getString("lastname"));
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 				
 				System.out.print(rs.getString("userRole"));
 				if(rs.getString("userRole").matches("inc")) {
-					if(rs.getString("confirmation").matches("true")) {
+					if(rs.getString("confirmation").matches("Confirmed")) {
 						response.sendRedirect("/Final/Instructor/ClassView");
 					}else {
 						dispatcher = request.getRequestDispatcher("/Final/isuccess.jsp");
@@ -83,7 +84,8 @@ public class Login extends HttpServlet {
 					dispatcher = request.getRequestDispatcher("/User/profile1.jsp");
 					
 				}else if(rs.getString("userRole").matches("admin")) {
-					dispatcher = request.getRequestDispatcher("/Admin/dashboard.jsp");
+					session.setAttribute("sessionID", "admin");
+					response.sendRedirect("/Final/Admin/Dashboard");
 				}
 				
 				dispatcher.forward(request, response);

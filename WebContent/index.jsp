@@ -7,6 +7,7 @@
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.util.List"%>
 <%@ page session="true"%>
+<%@ page import="resources.dbConnection"%>
     <%        
     response.setHeader("Pragma", "No-cache");
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -23,8 +24,8 @@
 PreparedStatement psx;
 ResultSet rsx;
 String logoimg = null;
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+Connection conx = dbConnection.getConnection();
 
 psx = conx.prepareStatement("Select * from webcontent where webpart = ?");
 psx.setString(1, "logo1");
@@ -34,8 +35,8 @@ if(rsx.next()){
 }
 
 PreparedStatement pse;
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+Connection con = dbConnection.getConnection();
 pse = con.prepareStatement("Select * from User");
 ResultSet rse = pse.executeQuery();
 while (rse.next()) {
@@ -49,8 +50,8 @@ while (rse.next()) {
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" style="height:60px;margin-bottom:10px" alt="logo"> </a>
-                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" alt="logo"> </a>
+                        <a class="navbar-brand main_logo" href="index.jsp"> <img src="<%=rsx.getString("link") %>" style="height:60px;margin-bottom:10px" alt="logo"> </a>
+                        <a class="navbar-brand single_page_logo" href="index.jsp"> <img src="<%=rsx.getString("link") %>" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -202,7 +203,7 @@ while (rse.next()) {
             <div class="row">
                 <div class=" col-md-2 col-lg-4">
                     <div class="single_footer_part">
-                        <a href="index.jsp" class="footer_logo_iner"> <img src="<%=rsx.getString(5) %>" style="height: 75px"alt="#"> </a>
+                        <a href="index.jsp" class="footer_logo_iner"> <img src="<%=rsx.getString("link") %>" style="height: 75px"alt="#"> </a>
                         <p>Skills Assessment and Course Training Web Application
                         </p>
                     </div>
@@ -446,11 +447,6 @@ Copyright &copy;2019 All rights reserved.</p>
                 	}
          		}
             	
-            	var adm = "admin@gmail.com";
-				var adp = "admin";
-				if ((adm == loginEmail) && adp == loginPassword){
-        			match = true;
-        		}
 				console.log(match);
             	if (!(match) ){
             	 	alertify.error("Invalid login!");

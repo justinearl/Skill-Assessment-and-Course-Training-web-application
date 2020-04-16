@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="java.io.IOException"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@
-page session="true"%>
-<%
-	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	response.setDateHeader("Expires", -1);
-%>
-<%
-	if (session.getAttribute("sessionID") == "admin") {
-		
-	%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="head.jsp" %>
@@ -32,7 +17,7 @@ page session="true"%>
 					<div class="row">
 						<div class="col-md-12">
 							<br />
-							<h1 class="title-4">Trainings</h1>
+							<h1 class="title-4">Classes</h1>
 							<hr class="line-seprate" />
 						</div>
 					</div>
@@ -51,45 +36,19 @@ page session="true"%>
 										<tr>
 											<th>Course Title</th>
 											<th>Course Category</th>
-											<th>Takers</th>
+											<th>Author</th>
 										</tr>
 									</thead>
 									<tbody>
-										<%
-											PreparedStatement ps1;
-												Class.forName("com.mysql.jdbc.Driver").newInstance();
-												Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-												ps1 = con.prepareStatement("Select * from assessmentList");
-												ResultSet rs1 = ps1.executeQuery();
-												while (rs1.next()) {
-										%>
+										<c:forEach items="${classList }" var="list">
 										<tr class="tr-shadow">
-											<td>
-												<%
-													out.print(rs1.getString(2));
-												%>
-											</td>
-
-											<td>
-												<%
-													out.print(rs1.getString(4));
-												%>
-											</td>
-											<td>
-												<%
-													PreparedStatement ps4;
-
-															ps4 = con.prepareStatement("Select COUNT(ID) from assessmentCompleted");
-															ResultSet rs4 = ps4.executeQuery();
-															while (rs4.next()) {
-																out.print(rs4.getString(1));
-															}
-												%>
-											</td>
+											<td>${list.name }</td>
+											<td>${list.subject }</td>
+											<td>${list.author }</td>
 										</tr>
-										<%
-											}
-										%>
+										</c:forEach>
+										
+									
 									</tbody>
 								</table>
 							</div>
@@ -119,53 +78,22 @@ page session="true"%>
 								<table class="table table-data2" id="assessments">
 									<thead>
 										<tr>
-											<th>Course Title</th>
-											<th>Course Category</th>
+											<th>Category</th>
+											<th>Exam Type</th>
 											<th>Set number</th>
-											<th>Takers</th>
+											<th>Author</th>
 										</tr>
 									</thead>
 									<tbody>
-										<%
-											PreparedStatement ps;
-
-												ps = con.prepareStatement("Select * from assessmentList");
-												ResultSet rs = ps.executeQuery();
-												while (rs.next()) {
-										%>
+										<c:forEach items="${assessList }" var="aList">
 										<tr class="tr-shadow">
-											<td>
-												<%
-													out.print(rs.getString(2));
-												%>
-											</td>
-
-											<td>
-												<%
-													out.print(rs.getString(4));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(8));
-												%>
-											</td>
-											<td>
-												<%
-													PreparedStatement ps3;
-
-															ps3 = con.prepareStatement("Select COUNT(ID) from trainingEnrolled");
-															ResultSet rs3 = ps3.executeQuery();
-															while (rs3.next()) {
-																out.print(rs3.getString(1));
-															}
-												%>
-
-											</td>
+											<td>${aList.category }</td>
+											<td>${aList.examtype }</td>
+											<td>${aList.set }</td>
+											<td>${aList.author }</td>
 										</tr>
-										<%
-											}
-										%>
+										</c:forEach>
+										
 									</tbody>
 								</table>
 							</div>
@@ -206,8 +134,3 @@ page session="true"%>
 </body>
 </html>
 
-<%
-	}else{
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
-	}
-%>

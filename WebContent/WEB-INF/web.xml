@@ -16,16 +16,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Logout</display-name>
-    <servlet-name>Logout</servlet-name>
-    <servlet-class>Profile.Logout</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Logout</servlet-name>
-    <url-pattern>/Logout</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ProfileController</display-name>
     <servlet-name>ProfileController</servlet-name>
     <servlet-class>Profile.ProfileController</servlet-class>
@@ -103,5 +93,95 @@
   <servlet-mapping>
     <servlet-name>SignUpInc</servlet-name>
     <url-pattern>/SignUpInc</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dashboard</display-name>
+    <servlet-name>Dashboard</servlet-name>
+    <servlet-class>admin.Dashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dashboard</servlet-name>
+    <url-pattern>/Admin/Dashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUser</display-name>
+    <servlet-name>DeleteUser</servlet-name>
+    <servlet-class>admin.DeleteUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUser</servlet-name>
+    <url-pattern>/Admin/DeleteUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewInstructor</display-name>
+    <servlet-name>ViewInstructor</servlet-name>
+    <servlet-class>admin.ViewInstructor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewInstructor</servlet-name>
+    <url-pattern>/Admin/ViewInstructor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcceptPending</display-name>
+    <servlet-name>AcceptPending</servlet-name>
+    <servlet-class>admin.AcceptPending</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceptPending</servlet-name>
+    <url-pattern>/Admin/AcceptPending</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrainAssess</display-name>
+    <servlet-name>TrainAssess</servlet-name>
+    <servlet-class>admin.TrainAssess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrainAssess</servlet-name>
+    <url-pattern>/Admin/TrainAssess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Feedback</display-name>
+    <servlet-name>Feedback</servlet-name>
+    <servlet-class>admin.Feedback</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Feedback</servlet-name>
+    <url-pattern>/Admin/Feedback</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ContentManagement</display-name>
+    <servlet-name>ContentManagement</servlet-name>
+    <servlet-class>admin.ContentManagement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContentManagement</servlet-name>
+    <url-pattern>/Admin/ContentManagement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadLogo</display-name>
+    <servlet-name>UploadLogo</servlet-name>
+    <servlet-class>admin.UploadLogo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadLogo</servlet-name>
+    <url-pattern>/Admin/UploadLogo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>home.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -19,7 +19,7 @@ if(rsx.next()){
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand main_logo" href="home.jsp"> <img src="<%=rsx.getString(5) %>" style="height:50px" alt="logo"> </a>
+                    <a class="navbar-brand main_logo" href="home.jsp"> <img src="<%=rsx.getString("link") %>" style="height:50px" alt="logo"> </a>
                     <a class="navbar-brand single_page_logo" href="home.jsp"> <img src="img/footer_logo.png" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

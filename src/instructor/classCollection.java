@@ -9,6 +9,7 @@ public class classCollection {
 	private String section;
 	private String img;
 	private String name;
+	private String author;
 	
 	
 	public String getId() {
@@ -52,6 +53,12 @@ public class classCollection {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	

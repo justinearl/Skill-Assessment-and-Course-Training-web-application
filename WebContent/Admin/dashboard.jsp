@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ include file="imports.jsp" %>
-<%
-	if (session.getAttribute("sessionID") == "admin") {	
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<%@ include file="head.jsp" %>
+<%@ include file="head.jsp"%>
 
 <body>
 	<div class="page-wrapper">
-		<%@ include file="adminHeader.jsp" %>
+		<%@ include file="adminHeader.jsp"%>
 
 
 		<!-- PAGE CONTENT-->
@@ -26,39 +24,25 @@
 							<h1 class="title-4">
 								Welcome back <span>Admin!</span>
 							</h1>
-							
+
 							<hr class="line-seprate">
 						</div>
-						<a href=<%=request.getContextPath()+ "/Admin/viewInc.jsp"%>>&nbsp;&nbsp;&nbsp;&nbsp;View Instructors</a>
+						<a href=<%=request.getContextPath() + "/Admin/ViewInstructor"%>>&nbsp;&nbsp;&nbsp;&nbsp;View
+							Instructors</a>
 					</div>
 				</div>
 			</section>
 			<!-- END WELCOME-->
-			
+
 			<!-- STATISTIC-->
 			<section class="statistic statistic2">
-			
+
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--green">
-								<h2 class="number" id="members">
-								<%
-								
-								PreparedStatement ps1;
-								Class.forName("com.mysql.jdbc.Driver").newInstance();
-								Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-									ps1 = con.prepareStatement("Select COUNT(ID) from User where userRole = 'student'  ");
-								
-					
-									ResultSet rs1 = ps1.executeQuery();
-									while (rs1.next()) {
-										out.print(rs1.getString(1));
-									}
-								%>
-								</h2>
-								
-								<span class="desc">members</span>
+								<h2 class="number" id="members">${userCount}</h2>
+								<span class="desc">Students</span>
 								<div class="icon">
 									<i class="zmdi zmdi-account-o"></i>
 								</div>
@@ -66,16 +50,7 @@
 						</div>
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--orange">
-								<h2 class="number" id="assessment"><%
-								
-								PreparedStatement ps2;
-									
-									ps2 = con.prepareStatement("Select COUNT(ID) from assessmentList");
-									ResultSet rs2 = ps2.executeQuery();
-									while (rs2.next()) {
-										out.print(rs2.getString(1));
-									}
-								%></h2>
+								<h2 class="number" id="assessment">${assessCount}</h2>
 								<span class="desc">assessments done</span>
 								<div class="icon">
 									<i class="zmdi zmdi-badge-check"></i>
@@ -84,16 +59,7 @@
 						</div>
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--blue">
-								<h2 class="number" id="trainings"><%
-								
-								PreparedStatement ps3;
-									
-									ps3 = con.prepareStatement("Select COUNT(ID) from trainingList");
-									ResultSet rs3 = ps3.executeQuery();
-									while (rs3.next()) {
-										out.print(rs3.getString(1));
-									}
-								%></h2>
+								<h2 class="number" id="trainings">${trainCount}</h2>
 								<span class="desc">trainings</span>
 								<div class="icon">
 									<i class="zmdi zmdi-calendar-note"></i>
@@ -102,12 +68,7 @@
 						</div>
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--red">
-								<h2 class="number" id="feedback"><%
-								ps3 = con.prepareStatement("Select COUNT(ID) from feedback");
-								rs3 = ps3.executeQuery();
-								while (rs3.next()) {
-									out.print(rs3.getString(1));
-								} %></h2>
+								<h2 class="number" id="feedback">${fbCount }</h2>
 								<span class="desc">feedback</span>
 								<div class="icon">
 									<i class="zmdi zmdi-comments"></i>
@@ -144,65 +105,27 @@
 										</tr>
 									</thead>
 									<tbody>
-
-											<%
-												PreparedStatement ps;
-													
-													ps = con.prepareStatement("Select * from User  where userRole !=?");
-													ps.setString(1, "inc");
-													ResultSet rs = ps.executeQuery();
-													while (rs.next()) {
-											%>
-											<tr class="tr-shadow">
-											<td>
-												<%
-													out.print(rs.getString(4));
-												%>
-											</td>
-											<td><span class="block-email">
-													<%
-														out.print(rs.getString(2));
-													%>
-											</span></td>
-											<td class="desc">
-												<%
-													out.print(rs.getString(9));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(11));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(13));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(14));
-												%>
-											</td>
-											<td><span class="status--process">
-													<%
-														out.print(rs.getString(12));
-													%>
-											</span></td>
+									<c:forEach items="${userList}" var="user">
+									<tr class="tr-shadow" id="${user.id}delete">
+											<td>${user.fname }</td>
+											<td><span class="block-email">${user.email }</span></td>
+											<td class="desc">${user.school }</td>
+											<td>${user.date }</td>
+											<td>${user.aDone }</td>
+											<td>${user.tDone }</td>
+											<td><span class="status--process">${user.points }</span></td>
 											<td>
 												<div class="table-data-feature">
 													<button class="item deleteBtn" data-toggle="modal"
-														data-target="#deleteModal" id="<%out.print(rs.getString(1));%>">
+														data-target="#deleteModal"
+														id="${user.id }">
 														<i class="zmdi zmdi-delete"></i>
 													</button>
-
 												</div>
 											</td>
-											</tr>
+										</tr>
+									</c:forEach>
 
-											<%
-												}
-											%>
 
 									</tbody>
 								</table>
@@ -227,73 +150,80 @@
 			</section>
 			<!-- END COPYRIGHT-->
 		</div>
-<a href = <%=request.getContextPath()+ "/Admin/logs.jsp"%>>Generate log Activity</a>
+		<a href=<%=request.getContextPath() + "/Admin/logs.jsp"%>>Generate
+			log Activity</a>
 	</div>
 
 	<!-- MODAL -->
 
 	<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-			  <div class="modal-content">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
 				<div class="modal-header">
-				  <h5 class="modal-title">Delete User</h5>
-				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
+					<h5 class="modal-title">Delete User</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="modal-body">
-				  <p>Are you sure you want to delete this user?</p>
+					<p>Are you sure you want to delete this user?</p>
 				</div>
 				<div class="modal-footer">
-				  <button type="button" class="btn btn-primary" id="goDelete" >Yes</button>
-				  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary" id="goDelete">Yes</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal" id="noBtn">No</button>
 				</div>
-			  </div>
 			</div>
-		  </div>
+		</div>
+	</div>
 
 
 
-	<%@ include file="jsScript.jsp" %>
+	<%@ include file="jsScript.jsp"%>
 
 	<script>
 		$(document).ready(function() {
-			var id="";
+		
+			var id = "";
 			$('#userSummary').DataTable({
 				paging : true
 			});
-			$(".deleteBtn").click(function(){
+			$(".deleteBtn").click(function() {
 				id = this.id;
 				console.log(id);
 			});
-			$("#goDelete").click(function(){
-				window.location.replace("delete.jsp?id="+id);
+			$("#goDelete").click(function() {
+				$.post(
+	                  '/Final/Admin/DeleteUser',
+	                  	{
+	                  		deleteId : id
+	                  	}
+	              ); 
+				//window.location.replace("Final/Admin/Delete?id=" + id);
+				var dropData = document.getElementById(id+"delete");
+				dropData.style.display = "none";
+				$("#noBtn").click();
+				
 			});
-			
+
 			if (window.history && window.history.pushState) {
 
-				if( window.history && window.history.pushState ){
+				if (window.history && window.history.pushState) {
 
-					  history.pushState( "nohb", null, "" );
-					  $(window).on( "popstate", function(event){
-					    if( !event.originalEvent.state ){
-					      history.pushState( "nohb", null, "" );
-					      return;
-					    }
-					  });
-					}
-			  }
+					history.pushState("nohb", null, "");
+					$(window).on("popstate", function(event) {
+						if (!event.originalEvent.state) {
+							history.pushState("nohb", null, "");
+							return;
+						}
+					});
+				}
+			}
 		});
-
-		
 	</script>
 
 </body>
 
 </html>
 
-<%
-	}else{
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
-	}
-%>

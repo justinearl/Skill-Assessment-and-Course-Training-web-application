@@ -70,7 +70,7 @@ public class SignUpInc extends HttpServlet {
 					b.setString(6,"0");
 					b.setString(7,backg);
 					b.setString(8, "inc");
-					b.setString(9, "false");
+					b.setString(9, "Pending");
 					b.setString(10, "/Final/avatar/7.png");
 					b.executeUpdate();
 					response.sendRedirect("isuccess.jsp");

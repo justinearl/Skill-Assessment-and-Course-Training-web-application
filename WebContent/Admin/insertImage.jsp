@@ -5,6 +5,7 @@
 <%@ page import = "org.apache.commons.fileupload.servlet.*" %>
 <%@ page import = "org.apache.commons.io.output.*" %>
 <%@ page import="java.sql.*"%>
+<%@ page import="resources.dbConnection"%>
 
 <%
    File file ;
@@ -67,15 +68,15 @@
                filePath = request.getContextPath()+"/WebContent/images/"+filenm;
                fi.write(new File(filePath)) ;
                
-               Class.forName("com.mysql.jdbc.Driver").newInstance();
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+				Connection con = dbConnection.getConnection();
 				
 				PreparedStatement ps;
 				ps = con.prepareStatement("update webcontent set link = ? where webpart = 'logo1'");
-				ps.setString(1, "images\\"+filenm);
+				ps.setString(1, "\\Final\\images\\"+filenm);
 				
 				ps.executeUpdate();
-				response.sendRedirect(request.getContextPath()+"/Admin/cmsAdmin.jsp");
+				response.sendRedirect(request.getContextPath()+"/Admin/ContentManagement");
             }
          }
     
@@ -83,6 +84,6 @@
          System.out.println(ex);
       }
    } else {
-	   response.sendRedirect(request.getContextPath()+"/Admin/cmsAdmin.jsp");
+	   response.sendRedirect(request.getContextPath()+"/Admin/ContentManagement");
    }
 %>

@@ -40,7 +40,7 @@ public class ClassView extends HttpServlet {
 		PreparedStatement ps,ps1;
 		ResultSet rs,rs1 = null;
 		
-			ArrayList<classCollection> getClass = classList(user);
+		ArrayList<classCollection> getClass = classList(user);
 
 		try {
 			ps = con.prepareStatement("Select * from user where id=?");

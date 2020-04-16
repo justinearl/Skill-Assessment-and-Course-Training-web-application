@@ -2,18 +2,19 @@
 
 
 <%@ page import="java.sql.*"%>
+<%@ page import="resources.dbConnection"%>
 <%
 PreparedStatement psx;
 ResultSet rsx;
 String logoimgss = null;
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+
+Connection conx = dbConnection.getConnection();
 
 psx = conx.prepareStatement("Select * from webcontent where webpart = ?");
 psx.setString(1, "logo1");
 rsx = psx.executeQuery();
 if(rsx.next()){
-	logoimgss = rsx.getString(5);
+	logoimgss = rsx.getString("link");
 }
 %>
 		<header class="header-desktop3 d-none d-lg-block"
@@ -22,23 +23,23 @@ if(rsx.next()){
 				style="background-color: white">
 				<div class="header3-wrap">
 					<div class="header__logo">
-						<a href="<%=request.getContextPath()+ "/Admin/dashboard.jsp"%>"> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" class="logo"
+						<a href="<%=request.getContextPath()+ "/Admin/Dashboard"%>"> <img src="<%=rsx.getString("link")%>" class="logo"
 							style="height: 50px" alt="SACT" />
 						</a>
 					</div>
 					<div class="header__navbar">
 						<ul class="list-unstyled">
-							<li class="has-sub"><a href="<%=request.getContextPath()+ "/Admin/dashboard.jsp"%>"> <i
+							<li class="has-sub"><a href="<%=request.getContextPath()+ "/Admin/Dashboard"%>"> <i
 									class="fas fa-tachometer-alt"></i>Dashboard <span
 									class="bot-line"></span>
 							</a></li>
-							<li><a href="<%=request.getContextPath()+ "/Admin/training_assessment.jsp" %>"> <i class="fas fa-book"></i> <span
-									class="bot-line"></span>Training and Assessments
+							<li><a href="<%=request.getContextPath()+ "/Admin/TrainAssess" %>"> <i class="fas fa-book"></i> <span
+									class="bot-line"></span>Classes and Assessments
 							</a></li>
-							<li><a href="<%=request.getContextPath()+ "/Admin/feedbackAdmin.jsp" %>"> <i class="fas fa-comment"></i> <span
+							<li><a href="<%=request.getContextPath()+ "/Admin/Feedback" %>"> <i class="fas fa-comment"></i> <span
 								class="bot-line"></span>Feedback
 						</a></li>
-						<li><a href="<%=request.getContextPath()+ "/Admin/cmsAdmin.jsp"%>"> <i class="fas fa-edit"></i> <span
+						<li><a href="<%=request.getContextPath()+ "/Admin/ContentManagement"%>"> <i class="fas fa-edit"></i> <span
 								class="bot-line"></span>CMS
 						</a></li>
 						
@@ -71,7 +72,7 @@ if(rsx.next()){
 										</div>
 									</div>
 									<div class="account-dropdown__footer">
-										<a href=<%=request.getContextPath()+"/logout2.jsp"%>> <i class="zmdi zmdi-power"></i>Logout
+										<a href=<%=request.getContextPath()+"/Logout"%>> <i class="zmdi zmdi-power"></i>Logout
 										</a>
 									</div>
 								</div>

@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ include file="imports.jsp"%>
-<%
-	if (session.getAttribute("sessionID") == "admin") {
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +29,7 @@
 
 							<hr class="line-seprate">
 						</div>
-						<a href="dashboard.jsp">&nbsp;&nbsp;&nbsp;&nbsp;View Users</a>
+						<a href=<%=request.getContextPath() + "/Admin/Dashboard"%>>&nbsp;&nbsp;&nbsp;&nbsp;View Users</a>
 					</div>
 				</div>
 			</section>
@@ -44,20 +42,7 @@
 					<div class="row">
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--green">
-								<h2 class="number" id="members">
-									<%
-										PreparedStatement ps1;
-											Class.forName("com.mysql.jdbc.Driver").newInstance();
-											Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-											ps1 = con.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='true'");
-
-											ResultSet rs1 = ps1.executeQuery();
-											while (rs1.next()) {
-												out.print(rs1.getString(1));
-											}
-									%>
-								</h2>
-
+								<h2 class="number" id="members">${incCount}</h2>
 								<span class="desc">instructors</span>
 								<div class="icon">
 									<i class="zmdi zmdi-account-o"></i>
@@ -66,18 +51,7 @@
 						</div>
 						<div class="col-md-6 col-lg-3">
 							<div class="statistic__item statistic__item--orange">
-								<h2 class="number" id="assessment">
-									<%
-										PreparedStatement ps2;
-
-											ps2 = con
-													.prepareStatement("Select COUNT(ID) from User where userRole = 'inc' and confirmation='false'");
-											ResultSet rs2 = ps2.executeQuery();
-											while (rs2.next()) {
-												out.print(rs2.getString(1));
-											}
-									%>
-								</h2>
+								<h2 class="number" id="assessment">${incPending }</h2>
 								<span class="desc">Pending</span>
 								<div class="icon">
 									<i class="zmdi zmdi-badge-check"></i>
@@ -115,67 +89,27 @@
 										</tr>
 									</thead>
 									<tbody>
-
-										<%
-											PreparedStatement ps;
-
-												ps = con.prepareStatement("Select * from User where userRole = 'inc'");
-												ResultSet rs = ps.executeQuery();
-												while (rs.next()) {
-										%>
+								<c:forEach items = '${userList}' var='data'>
 										<tr class="tr-shadow">
-											<td>
-												<%
-													out.print(rs.getString(4));
-												%>
-											</td>
-											<td><span class="block-email"> <%
- 	out.print(rs.getString(2));
- %>
-											</span></td>
-											<td class="desc">
-												<%
-													out.print(rs.getString(9));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(11));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(13));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(14));
-												%>
-											</td>
-											<td id="stat"><span class="status--process"> <%
- 	if (rs.getString(18).matches("true")) {
- 				out.print("Confirmed");
- 			} else {
- 				out.print("Pending");
- 			}
- %>
-											</span></td>
+											<td>${data.fname }</td>
+											<td><span class="block-email">${data.email }</span></td>
+											<td class="desc">${data.bio}</td>
+											<td>${data.date }</td>
+											<td>${data.aDone}</td>
+											<td>${data.tDone}</td>
+											<td id="stat"><span class="status--process">${data.status}</span></td>
 											<td>
 												<div class="table-data-feature">
 													<button class="item deleteBtn" data-toggle="modal"
 														data-target="#deleteModal"
-														id="<%out.print(rs.getString(1));%>">
+														id="${data.id}">
 														<i class="zmdi zmdi-delete"></i>
 													</button>
 
 												</div>
 											</td>
 										</tr>
-
-										<%
-											}
-										%>
+									</c:forEach>
 
 									</tbody>
 								</table>
@@ -221,7 +155,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="goDelete">Yes</button>
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">No</button>
+						data-dismiss="modal" id = "noBtn">No</button>
 				</div>
 			</div>
 		</div>
@@ -244,7 +178,14 @@
 				console.log(id);
 			});
 			$("#goDelete").click(function() {
-				window.location.replace("iaccept.jsp?id=" + id);
+				
+				$.post(
+		                  '/Final/Admin/AcceptPending',
+		                  	{
+		                  		pendingId : id
+		                  	}
+		              ); 
+				$("#noBtn").click();
 			});
 		});
 
@@ -263,8 +204,3 @@
 
 </html>
 
-<%
-	} else {
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
-	}
-%>

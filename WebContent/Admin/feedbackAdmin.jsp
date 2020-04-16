@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="java.io.IOException"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@
-page session="true"%>
-<%
-	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	response.setDateHeader("Expires", -1);
-%>
-<%
-	if (session.getAttribute("sessionID") == "admin") {
-		
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="head.jsp" %>
@@ -55,42 +40,14 @@ page session="true"%>
 										</tr>
 									</thead>
 									<tbody>
-										<%
-											PreparedStatement ps;
-												Class.forName("com.mysql.jdbc.Driver").newInstance();
-												Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
-												ps = con.prepareStatement("Select * from feedback");
-												ResultSet rs = ps.executeQuery();
-												while (rs.next()) {
-										%>
+										<c:forEach items="${feedback }"	var="message">
 										<tr class="tr-shadow">
-											<td>
-												<%
-													int foo = Integer.parseInt(rs.getString(4));
-															PreparedStatement ps1;
-
-															ps1 = con.prepareStatement("Select * from feedback where uid =" + foo);
-															ResultSet rs1 = ps1.executeQuery();
-															rs1.next();
-															out.print(rs1.getString(4));
-												%>
-											</td>
-
-											<td>
-												<%
-													out.print(rs1.getString(2));
-												%>
-											</td>
-											<td>
-												<%
-													out.print(rs.getString(3));
-												%>
-											</td>
+											<td>${message.name }</td>
+											<td>${message.subject }</td>
+											<td>${message.message }</td>
 										</tr>
-
-										<%
-											}
-										%>
+										</c:forEach>
+										
 									</tbody>
 								</table>
 							</div>
@@ -127,8 +84,3 @@ page session="true"%>
 </body>
 </html>
 
-<%
-	}else{
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
-	}
-%>
