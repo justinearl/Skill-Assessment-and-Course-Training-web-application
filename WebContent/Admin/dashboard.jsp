@@ -203,6 +203,8 @@
 				//window.location.replace("Final/Admin/Delete?id=" + id);
 				var dropData = document.getElementById(id+"delete");
 				dropData.style.display = "none";
+				
+				
 				$("#noBtn").click();
 				
 			});

@@ -90,14 +90,14 @@
 									</thead>
 									<tbody>
 								<c:forEach items = '${userList}' var='data'>
-										<tr class="tr-shadow">
+										<tr class="tr-shadow" >
 											<td>${data.fname }</td>
 											<td><span class="block-email">${data.email }</span></td>
 											<td class="desc">${data.bio}</td>
 											<td>${data.date }</td>
 											<td>${data.aDone}</td>
 											<td>${data.tDone}</td>
-											<td id="stat"><span class="status--process">${data.status}</span></td>
+											<td id="${data.id}stat"><span class="status--process">${data.status}</span></td>
 											<td>
 												<div class="table-data-feature">
 													<button class="item deleteBtn" data-toggle="modal"
@@ -168,6 +168,7 @@
 	<script>
 		$(document).ready(function() {
 			statusCheck();
+			
 
 			var id = "";
 			$('#userSummary').DataTable({
@@ -178,14 +179,25 @@
 				console.log(id);
 			});
 			$("#goDelete").click(function() {
-				
+				let tableData = document.getElementById(id+"stat");
+				tableData.innerHTML = "";
 				$.post(
 		                  '/Final/Admin/AcceptPending',
 		                  	{
 		                  		pendingId : id
-		                  	}
-		              ); 
+		                  	},
+		                  	function(data){
+		 					   $(tableData).html(data);
+		 					   console.log(data);
+		 					}  
+		              );
+				
+			
+					
+				
 				$("#noBtn").click();
+				return false;
+				
 			});
 		});
 

@@ -28,7 +28,7 @@ public class FilterReqsForAdmin implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        if (((String) session.getAttribute("sessionID")).equals(null)) {
+        if (((String) session.getAttribute("sessionID")).equals("empty")) {
         	response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
         else if (((String) session.getAttribute("userRole")).matches("admin")) {

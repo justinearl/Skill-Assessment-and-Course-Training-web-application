@@ -53,7 +53,7 @@ public class Signup extends HttpServlet {
 				ps1.setString(4, last);
 				ps1.setString(5, "0");
 				ps1.setString(6, "0");
-				ps1.setString(7, "/final/avatar/7.png");
+				ps1.setString(7, "/Final/avatar/7.png");
 				ps1.setString(8, "student");
 				ps1.executeUpdate();
 				con.close();

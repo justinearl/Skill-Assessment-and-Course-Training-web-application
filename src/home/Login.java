@@ -81,7 +81,7 @@ public class Login extends HttpServlet {
 					
 
 				}else if(rs.getString("userRole").matches("student")) {
-					dispatcher = request.getRequestDispatcher("/User/profile1.jsp");
+					response.sendRedirect("/Final/User/Profile");
 					
 				}else if(rs.getString("userRole").matches("admin")) {
 					session.setAttribute("sessionID", "admin");

@@ -25,8 +25,8 @@ logQue = con.prepareStatement("Insert into logs (logDate, logActivity) values(?,
 logQue.setString(1,dd);
 logQue.setString(2,act);
 logQue.executeUpdate();
-
-	session.removeAttribute("sessionID");
+	
+	session.setAttribute("sessionID", "empty");
 	session.invalidate();
 	response.sendRedirect(request.getContextPath()+"/index.jsp");
 %>

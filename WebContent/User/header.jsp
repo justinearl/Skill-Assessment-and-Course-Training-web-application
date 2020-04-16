@@ -1,17 +1,18 @@
 
 <%@ page import="java.sql.*"%>
+<%@ page import="resources.dbConnection"%>
 <%
 PreparedStatement psx;
 ResultSet rsx;
-String logoimg = null;
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/sactapp", "root", "1234");
+String logoimgss = null;
+
+Connection conx = dbConnection.getConnection();
 
 psx = conx.prepareStatement("Select * from webcontent where webpart = ?");
 psx.setString(1, "logo1");
 rsx = psx.executeQuery();
 if(rsx.next()){
-	logoimg = rsx.getString(5);
+	logoimgss = rsx.getString("link");
 }
 %>
 <header class="main_menu">
@@ -19,7 +20,7 @@ if(rsx.next()){
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand main_logo" href=<%=request.getContextPath()+"/User/home.jsp"%>> <img src="<%=request.getContextPath()+"/"+rsx.getString(5) %>" style="height:50px" alt="logo"> </a>
+                    <a class="navbar-brand main_logo" href=<%=request.getContextPath()+"/User/home.jsp"%>> <img src="<%=rsx.getString("link")%>" style="height:50px" alt="logo"> </a>
                     <a class="navbar-brand single_page_logo" href="home.jsp"> <img src=<%=request.getContextPath()+ "/img/footer_logo.png"%> alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -33,7 +34,7 @@ if(rsx.next()){
                                 <a class="nav-link" href=<%=request.getContextPath()+"/User/home.jsp"%>>Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href=<%=request.getContextPath()+"/User/profile1.jsp"%>>My Profile</a>
+                                <a class="nav-link" href=<%=request.getContextPath()+"/User/Profile"%>>My Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<%=request.getContextPath()+"/User/assessment1.jsp"%>">Assessments</a>

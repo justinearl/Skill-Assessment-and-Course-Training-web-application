@@ -3,10 +3,12 @@ package admin;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,11 @@ public class AcceptPending extends HttpServlet {
 
     }
 
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+		response.getWriter().print("Ok");
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user = request.getParameter("pendingId");
@@ -44,6 +51,8 @@ public class AcceptPending extends HttpServlet {
 				logQue.setString(1,dd);
 				logQue.setString(2,act);
 				logQue.executeUpdate();
+				
+				response.getWriter().print("Confirmed");
 
 			ps.close();
 			con.close();
