@@ -153,8 +153,24 @@ Copyright &copy;2019 All rights reserved.</P>,
         	$("#part1Identi").css("display","block");
         	$("#part1Multi").css("display","none");
         }
+        let jSon = null;
         $(function () {
-            $("#part1Multi").dynamicTable({
+        	$.ajaxSetup({
+  				async: false
+				});
+        	$.get(
+	                  '/Final/LoadAssessmentData',
+	                  	{
+	                  		pendingId : "test"
+	                  	},
+	                  	function(data){
+	                  		jSon = JSON.parse(data);
+	 					}
+	 					
+	              );
+            console.log(jSon);
+            $("#part1Multi").dynamicTable(
+            		{
                 columns: [{
                         text: "Question",
                         key: "question"
@@ -180,15 +196,7 @@ Copyright &copy;2019 All rights reserved.</P>,
                         key: "ans"
                     },
                 ],
-                data: [{
-                        question: 'What is the unit of resistance?',
-                        a: 'Ohm',
-                        b: 'Ampere',
-                        c: 'Volt',
-                        d: 'Watt',
-                        ans: 'A',
-                    },
-                ],
+                data: jSon,
                 getControl: function (columnKey) {
                     if (columnKey == "ans") {
                         return '<select class="form-control"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>';

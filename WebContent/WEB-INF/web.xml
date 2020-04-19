@@ -194,4 +194,14 @@
     <servlet-name>Profile</servlet-name>
     <url-pattern>/User/Profile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoadAssessmentData</display-name>
+    <servlet-name>LoadAssessmentData</servlet-name>
+    <servlet-class>instructor.LoadAssessmentData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadAssessmentData</servlet-name>
+    <url-pattern>/LoadAssessmentData</url-pattern>
+  </servlet-mapping>
 </web-app>
