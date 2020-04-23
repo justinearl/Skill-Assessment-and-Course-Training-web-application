@@ -204,4 +204,44 @@
     <servlet-name>LoadAssessmentData</servlet-name>
     <url-pattern>/LoadAssessmentData</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClassRoom</display-name>
+    <servlet-name>ClassRoom</servlet-name>
+    <servlet-class>instructor.ClassRoom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassRoom</servlet-name>
+    <url-pattern>/Instructor/ClassView/ClassRoom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoadIdentification</display-name>
+    <servlet-name>LoadIdentification</servlet-name>
+    <servlet-class>instructor.LoadIdentification</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadIdentification</servlet-name>
+    <url-pattern>/LoadIdentification</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveQuestion</display-name>
+    <servlet-name>SaveQuestion</servlet-name>
+    <servlet-class>instructor.SaveQuestion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveQuestion</servlet-name>
+    <url-pattern>/Instructor/SaveQuestion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveQuestionIdent</display-name>
+    <servlet-name>SaveQuestionIdent</servlet-name>
+    <servlet-class>instructor.SaveQuestionIdent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveQuestionIdent</servlet-name>
+    <url-pattern>/Instructor/SaveQuestionIdent</url-pattern>
+  </servlet-mapping>
 </web-app>

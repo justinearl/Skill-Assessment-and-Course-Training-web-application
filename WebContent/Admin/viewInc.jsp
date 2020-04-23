@@ -187,8 +187,10 @@
 		                  		pendingId : id
 		                  	},
 		                  	function(data){
-		 					   $(tableData).html(data);
+		                  		tableData.innerHTML = data;
+		 					   //$(tableData).html(data);
 		 					   console.log(data);
+		 					   console.log(tableData);
 		 					}  
 		              );
 				

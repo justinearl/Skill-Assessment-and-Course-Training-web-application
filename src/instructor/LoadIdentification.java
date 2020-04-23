@@ -14,43 +14,40 @@ import javax.servlet.http.HttpSession;
 
 import resources.dbConnection;
 
-public class LoadAssessmentData extends HttpServlet {
+public class LoadIdentification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
   
-    public LoadAssessmentData() {
+    public LoadIdentification() {
         super();
-      
+  
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jSon ="[{\"question\": \"What is the unit of resistance?\", \"a\": \"Ohm\", \"b\": \"Ampere\", \"c\": \"Volt\", \"d\": \"Watt\", \"ans\": \"A\" }]";
-		String clss = request.getParameter("pendingId");
 		HttpSession session = request.getSession(false);
 		String user = (String) session.getAttribute("sessionID");
+		String jSon ="[{\"question\": \"What is the unit of resistance?\",  \"ans\": \"Ohm\" }]";
+		String clss = request.getParameter("pendingId");
 		PreparedStatement ps;
 		ResultSet rs = null;
 		Connection con = dbConnection.getConnection();
 		
 		try {
-			ps = con.prepareStatement("Select * from questionlist where type = ? and asID = ? and authorId=?");
-			ps.setString(1, "choices");
+			ps = con.prepareStatement("Select * from questionlist where type = ? and asID = ? and authorId = ?");
+			ps.setString(1, "identification");
 			ps.setString(2, clss);
 			ps.setString(3, user);
 			rs = ps.executeQuery();
 			int c = 0;
-			String question, answer, choiceA, choiceB, choiceC, choiceD;
+			String question, answer;
 			while(rs.next()) {
 				question  =  rs.getString("question");
 				answer  =  rs.getString("answer");
-				choiceA  =  rs.getString("choiceA");
-				choiceB  =  rs.getString("choiceB");
-				choiceC  =  rs.getString("choiceC");
-				choiceD  =  rs.getString("choiceD");
 				
 				if(c == 0) {jSon = "[";}
 				if(c > 0) {jSon = jSon + ",";}
-				jSon = jSon + "{\"question\": \""+question+"\", \"a\": \""+choiceA+"\", \"b\": \""+choiceB+"\", \"c\": \""+choiceC+"\", \"d\": \""+choiceD+"\", \"ans\": \""+answer+"\" }";
+				jSon = jSon + "{\"question\": \""+question+"\", \"ans\": \""+answer+"\" }";
 				c++;
 			}
 			if(c > 0) {jSon = jSon + "]";}
@@ -60,11 +57,7 @@ public class LoadAssessmentData extends HttpServlet {
 		}
 
 		response.getWriter().write(jSon);
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
 	}
 
 }

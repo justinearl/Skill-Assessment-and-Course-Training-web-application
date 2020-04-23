@@ -83,7 +83,7 @@ public class ClassView extends HttpServlet {
 			classes = new ArrayList<>();
 			while(rs.next()) {
 				classCollection classCon = new classCollection();
-				classCon.setId("/Final/Instructor/createAssessment.jsp?classId="+rs.getString("id"));
+				classCon.setId("/Final/Instructor/ClassView/ClassRoom?classId="+rs.getString("id"));
 				classCon.setName(rs.getString("classname"));
 				classCon.setSection(rs.getString("classsection"));
 				classCon.setSubject(rs.getString("classsubject"));
